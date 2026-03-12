@@ -1,0 +1,1 @@
+## başliş="Automation Agent & Analyzer is an intelligent automation component that monitors systems, analyzes data, and takes automated action when necessary. It is designed for modern software infrastructures and is particularly suitable for areas such as CI/CD, security analytics, performance monitoring, and data flow control."
