@@ -1,18 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Metadata } from "next";
 // Geist yerine modern SaaS fontlarını çekiyoruz
-import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google"; 
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/provider/theme-provider";
 import SmoothScroll from "../components/shared/smooth-scroll";
 import Footer from "../components/shared/footer";
-import ComingSoonModal from "@/components/shared/ComingSoonModal";
+import ComingSoonModal from "@/src/components/shared/ComingSoonModal";
 
 // Ana metinler, başlıklar ve butonlar için harika bir font
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   // Fontun kalınlıklarını projeye göre optimize ediyoruz
-  weight: ["400", "500", "600", "700", "800"], 
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 // Kod blokları, loglar ve teknik detaylar için
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   title: "Worktio | Yeni Nesil Otomasyon Akışı",
   description: "Yapay zeka destekli, ultra hızlı ve modern iş akışı otomasyon platformu.",
   icons: {
-    icon: "/logo.png" 
+    icon: "/logo.png"
   },
   openGraph: {
     title: "Worktio | Yeni Nesil Otomasyon Akışı",
@@ -49,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <head />
-      <body 
+      <body
         className={`
           ${plusJakarta.variable} ${jetBrainsMono.variable} 
           font-sans antialiased 
@@ -63,9 +64,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SmoothScroll>
-            {isSiteLocked && <ComingSoonModal />}
+            {/* {isSiteLocked && <ComingSoonModal />} */}
             {children}
-            <Footer/>
+            {/* <Footer /> */}
           </SmoothScroll>
         </ThemeProvider>
       </body>

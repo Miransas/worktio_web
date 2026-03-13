@@ -4,14 +4,20 @@ import Navbar from '../components/shared/header'
 import WorktioHero from '../components/hero/hero'
 import Scena from '../components/hero/EcosystemSection'
 import EcosystemSection from '../components/hero/EcosystemSection'
+import LoginButton from '../components/auth/login-button'
+import Footer from '../components/shared/footer'
 
 const page = () => {
   return (
     <div>
-      <EcosystemSection/>
-      <Navbar/>
+      <EcosystemSection />
+      <Navbar />
+      <div>
+        <LoginButton/>
+      </div>
       {/* <WorktioHero/> */}
-      <ScrollHorizontal/>     
+      <ScrollHorizontal />
+      <Footer/>
     </div>
   )
 }

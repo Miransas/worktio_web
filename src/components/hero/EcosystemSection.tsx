@@ -9,6 +9,7 @@ import {
 import { BsInstagram, BsTelegram, BsYoutube } from "react-icons/bs";
 import TechStackSections from "./techstack-sections";
 
+
 // ─── Kusursuz Akan Lazer (Linear Style) ─────────────
 const AnimatedLine = ({ d, color, delay, duration = 3 }: { d: string; color: string; delay: number; duration?: number }) => (
   <g>
@@ -83,7 +84,7 @@ export default function EcosystemSection() {
             Connect your favorite apps in seconds. Drag, drop, and automate your entire workflow with n8n-level precision and AI-powered logic.
           </p>
         </div>
-
+        
         {/* ─── ŞEMA ALANI (KARTLAR VE ÇİZGİLER) ─── */}
         <div className="relative w-full h-[500px] bg-[#050505]/50 border border-white/5 rounded-3xl p-8 shadow-2xl overflow-hidden">
 
