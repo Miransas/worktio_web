@@ -1,7 +1,12 @@
-// src/proxy.ts
-export { auth as proxy } from "./auth"
+///proxy.ts
+// middleware.ts (veya proxy.ts)
+import NextAuth from "next-auth";
+import { authConfig } from "./auth.config";
+
+// Sadece default olarak dışa aktar, Next.js bunu bekler
+export default NextAuth(authConfig).auth;
 
 export const config = {
-  // api/auth yollarını ve statik dosyaları kesinlikle hariç tutuyoruz
-  matcher: ["/((?!api/auth|_next/static|_next/image|favicon.ico).*)"],
-}
+  // api, _next/static vb. hariç her tetiklenmede çalışır
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+};

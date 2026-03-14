@@ -46,15 +46,19 @@ export default function AgentPage() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    fetch("/api/agents").then(r => r.json()).then(data => {
-      setAgents(data);
-      if (data.length > 0) selectAgent(data[0]);
-    });
+    fetch("/api/agents")
+      .then(r => r.json())
+      .then(data => {
+        // Gelen verinin dizi olduğundan emin olalım
+        const agentsList = Array.isArray(data) ? data : (data.agents || []);
+        setAgents(agentsList);
+        if (agentsList.length > 0) selectAgent(agentsList[0]);
+      })
+      .catch(err => {
+        console.error("Agent yükleme hatası:", err);
+        setAgents([]); // Hata durumunda boş dizi ata ki çökmesin
+      });
   }, []);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
 
   const selectAgent = async (agent: Agent) => {
     setSelectedAgent(agent);
@@ -195,11 +199,11 @@ export default function AgentPage() {
                 <div className="text-sm font-semibold text-zinc-200">{selectedAgent.name}</div>
                 <div className="text-xs text-zinc-500 flex items-center gap-1.5">
                   <span>{MODELS.find(m => m.value === selectedAgent.model)?.label}</span>
-                  {(selectedAgent.tools as string[]).length > 0 && (
+                  {Array.isArray(selectedAgent.tools) && selectedAgent.tools.length > 0 && (
                     <>
                       <span>·</span>
                       <Wrench size={10} />
-                      <span>{(selectedAgent.tools as string[]).length} tool</span>
+                      <span>{selectedAgent.tools.length} tool</span>
                     </>
                   )}
                 </div>

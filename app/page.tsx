@@ -17,6 +17,7 @@ const page = () => {
       {/* <WorktioHero/> */}
       <ScrollHorizontal />
       <Footer />
+     
     </div>
   )
 }

@@ -1,17 +1,7 @@
-
+import { auth } from "@/auth";
 import { redirect } from "next/navigation";
-import {
-  Workflow,
-  Code2,
-  Megaphone,
-  Box,
-  Headset,
-  Zap,
-  LayoutDashboard
-} from 'lucide-react';
-import { auth } from "../../auth";
-import CategoryCard from "../../components/dashboard/category-card";
-
+import { Workflow, Code2, Megaphone, Box, Headset, Zap } from 'lucide-react';
+import CategoryCard from "../../components/dashboard/categoty-card";
 
 
 const WORKTIO_MODULES = [
@@ -63,39 +53,25 @@ const WORKTIO_MODULES = [
 
 export default async function DashboardPage() {
   const session = await auth();
-
   if (!session) redirect("/");
 
   return (
-    <main className="min-h-screen bg-[#09090b] text-zinc-100">
-      {/* İnce Üst Bar */}
+    <div className="max-w-[1400px] mx-auto">
+      <header className="mb-12">
+        <h1 className="text-5xl font-extrabold tracking-tight mb-4">
+          Hoş geldin, <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">{session.user?.name?.split(' ')[0]}</span>
+        </h1>
+        <p className="text-zinc-500 mt-4 text-lg font-medium">
+          Worktio mimarisi aktif. Hangi departmanı devreye almak istersin?
+        </p>
+      </header>
 
-
-      <main className="w-full mx-auto px-6 py-16">
-        {/* Karşılama Bölümü */}
-        <header className="mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-500 mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            Sistem Çevrimiçi
-          </div>
-          <h1 className="text-5xl font-extrabold tracking-tight mb-4">
-            Hoş geldin, <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">{session.user?.name?.split(' ')[0]}</span>
-          </h1>
-          <p className="text-zinc-400 text-xl max-w-2xl">
-            Worktio mimarisi hazır. Hangi departmanı devreye almak istersin?
-          </p>
-        </header>
-
-        {/* Grid Yapısı */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {WORKTIO_MODULES.map((module) => (
-            <CategoryCard key={module.title} {...module} />
-          ))}
-        </div>
-      </main>
-    </main>
+      {/* Grid: 1 kolon mobilde, 3 kolon büyük ekranda */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {WORKTIO_MODULES.map((module) => (
+          <CategoryCard key={module.title} {...module} />
+        ))}
+      </div>
+    </div>
   );
 }

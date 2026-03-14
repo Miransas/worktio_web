@@ -1,22 +1,28 @@
+// auth.ts
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import { db } from "./lib/db";
-
+import { db } from "@/lib/db";
+import { authConfig } from "./auth.config";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   adapter: DrizzleAdapter(db),
-  providers: [
-    Google({
-      clientId: process.env.AUTH_GOOGLE_ID,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          scope: "openid email profile https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/youtube.readonly"
-        }
+  session: { strategy: "jwt" }, // JWT'yi burada da zorluyoruz
+  callbacks: {
+    ...authConfig.callbacks,
+    // JWT oluşurken veritabanındaki ID'yi token'ın içine atıyoruz
+    async jwt({ token, user }) {
+      if (user) {
+        token.sub = user.id;
       }
-    }),
-  ],
+      return token;
+    },
+    // Token'daki ID'yi alıp session.user.id'ye eşitliyoruz
+    async session({ session, token }) {
+      if (token?.sub && session.user) {
+        session.user.id = token.sub;
+      }
+      return session;
+    }
+  }
 });

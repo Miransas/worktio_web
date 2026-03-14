@@ -126,28 +126,48 @@ export async function POST(req: Request, { params }: { params: Params }) {
   const toolCalls: { tool: string; args: any; result: string }[] = [];
   let responseText = "";
 
+  // ... history çekme işlemleri ...
+
   const data = await callOpenAI(formattedHistory, agent.systemPrompt, agent.model, agentTools);
-  console.log("OpenAI response:", JSON.stringify(data, null, 2));
   const choice = data.choices?.[0];
 
+
   if (choice?.message?.tool_calls) {
-    for (const tc of choice.message.tool_calls) {
-      const args = JSON.parse(tc.function.arguments ?? "{}");
+    const toolCallsList = choice.message.tool_calls;
+    const toolMsgs: any[] = [];
+    
+    // Her bir tool için işlem yap
+    for (const tc of toolCallsList) {
+      const args = JSON.parse(tc.function.arguments || "{}");
       const result = await executeTool(tc.function.name, args);
-      toolCalls.push({ tool: tc.function.name, args, result });
+      
+      toolCalls.push({ tool: tc.function.name, args, result }); // Veritabanına kaydetmek için
+
+      // OpenAI'ın tam olarak beklediği "Tool Yanıtı" formatı
+      toolMsgs.push({
+        role: "tool",
+        tool_call_id: tc.id, // DİKKAT: Tool ismi değil, benzersiz ID!
+        name: tc.function.name,
+        content: String(result), // İçerik her zaman string olmalı
+      });
     }
-    const toolMsgs = toolCalls.map(tc => ({
-      role: "tool" as const,
-      content: tc.result,
-      tool_call_id: tc.tool,
-    }));
+
+    // İkinci çağrıyı yap (Asistanın tool çağrısı mesajını da araya eklemek ZORUNLUDUR)
     const data2 = await callOpenAI(
-      [...formattedHistory, choice.message, ...toolMsgs],
-      agent.systemPrompt, agent.model, []
+      [
+        ...formattedHistory, 
+        choice.message, // Modelin "ben tool çağırıyorum" dediği mesaj
+        ...toolMsgs    // Bizim "al bu da sonuçları" dediğimiz mesajlar
+      ],
+      agent.systemPrompt, 
+      agent.model, 
+      [] // İkinci turda tool göndermiyoruz ki sonsuz döngüye girmesin
     );
-    responseText = data2.choices?.[0]?.message?.content ?? "";
+    
+    responseText = data2.choices?.[0]?.message?.content || "Tool işlemi tamamlandı ancak bir yanıt oluşturulamadı.";
   } else {
-    responseText = choice?.message?.content ?? "";
+    // Tool kullanılmadıysa direkt cevabı al
+    responseText = choice?.message?.content || "";
   }
 
   const [saved] = await db.insert(messages).values({

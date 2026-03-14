@@ -50,7 +50,7 @@ export default function RootLayout({
 }>) {
   const isSiteLocked = true;
   return (
-    <html lang="tr" suppressHydrationWarning>
+    <html lang="Uzb,Tr,Us" suppressHydrationWarning>
       <head />
       <body
         className={`
