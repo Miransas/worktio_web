@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "features": "Xususiyatlar",
+    "pricing": "Narxlar",
+    "docs": "Hujjatlar",
+    "blog": "Blog",
+    "changelog": "Yangiliklar",
+    "support": "Yordam",
+    "login": "Kirish",
+    "start": "Bepul Boshlash"
+  },
+  "hero": {
+    "badge": "n8n'dan Kuchliroq Avtomatlashtirish Platformasi",
+    "title1": "Avtomatlashtirishni",
+    "title2": "Qayta O'ylang",
+    "desc": "Flow Builder + AI Agent + Real-time ijro. GPT-4o bilan aqlli qarorlar qabul qiling, sudrab tashlash orqali murakkab avtomatlashtirishlarni quring.",
+    "cta1": "Bepul Boshlash",
+    "cta2": "Demoni Ko'rish",
+    "badge1": "Kredit karta shart emas",
+    "badge2": "1000 bepul ijro",
+    "badge3": "2 daqiqada o'rnatish"
+  },
+  "features": {
+    "badge": "Hamma narsa ichki",
+    "title": "Tashqi plaginlarga",
+    "titleHighlight": "ehtiyoj yo'q",
+    "desc": "Flow Builder'dan AI Agent'ga, webhooklardan Gmail integratsiyasiga — hamma narsa shu yerda."
+  },
+  "pricing": {
+    "title": "Oddiy",
+    "titleHighlight": "narxlash",
+    "desc": "Kutilmagan xarajatlar yo'q. Yashirin to'lovlar yo'q.",
+    "monthly": "Oylik",
+    "yearly": "Yillik",
+    "discount": "20% chegirma",
+    "current": "Joriy Reja",
+    "free": "Abadiy bepul"
+  },
+  "dashboard": {
+    "welcome": "Xush kelibsiz",
+    "subtitle": "Worktio tayyor. Bugun nima avtomatlashtiramiz?",
+    "flows": "Flow",
+    "executions": "Ijro",
+    "agents": "Agent",
+    "successRate": "Muvaffaqiyat darajasi"
+  },
+  "sidebar": {
+    "overview": "Umumiy ko'rinish",
+    "flowBuilder": "Flow Builder",
+    "chat": "Suhbat",
+    "analytics": "Tahlil",
+    "billing": "To'lov",
+    "settings": "Sozlamalar",
+    "executions": "Ijrolar"
+  },
+  "common": {
+    "save": "Saqlash",
+    "delete": "O'chirish",
+    "cancel": "Bekor qilish",
+    "loading": "Yuklanmoqda...",
+    "error": "Xato yuz berdi",
+    "success": "Muvaffaqiyatli",
+    "back": "Orqaga"
+  }
+}

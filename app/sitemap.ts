@@ -1,0 +1,19 @@
+import { MetadataRoute } from "next";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const base = "https://worktio.com";
+  const now = new Date();
+
+  return [
+    { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/docs`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/changelog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${base}/docs/getting-started`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/docs/flow-builder`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/docs/ai-agent`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/docs/api`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/pricing`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+  ];
+}

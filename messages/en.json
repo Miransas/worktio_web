@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "docs": "Docs",
+    "blog": "Blog",
+    "changelog": "Changelog",
+    "support": "Support",
+    "login": "Login",
+    "start": "Start Free"
+  },
+  "hero": {
+    "badge": "More Powerful Than n8n",
+    "title1": "Rethink",
+    "title2": "Automation",
+    "desc": "Flow Builder + AI Agent + Real-time execution. Make smart decisions with GPT-4o, build complex automations with drag and drop.",
+    "cta1": "Start Free",
+    "cta2": "Watch Demo",
+    "badge1": "No credit card required",
+    "badge2": "1000 free executions",
+    "badge3": "Setup in 2 minutes"
+  },
+  "features": {
+    "badge": "Everything built-in",
+    "title": "No need for",
+    "titleHighlight": "external plugins",
+    "desc": "From Flow Builder to AI Agent, from webhooks to Gmail integration — everything is here."
+  },
+  "pricing": {
+    "title": "Simple",
+    "titleHighlight": "pricing",
+    "desc": "No surprises. No hidden fees.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "discount": "20% off",
+    "current": "Current Plan",
+    "free": "Free forever"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "subtitle": "Worktio is ready. What shall we automate today?",
+    "flows": "Flows",
+    "executions": "Executions",
+    "agents": "Agents",
+    "successRate": "Success Rate"
+  },
+  "sidebar": {
+    "overview": "Overview",
+    "flowBuilder": "Flow Builder",
+    "chat": "Chat",
+    "analytics": "Analytics",
+    "billing": "Billing",
+    "settings": "Settings",
+    "executions": "Executions"
+  },
+  "common": {
+    "save": "Save",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "back": "Back"
+  }
+}

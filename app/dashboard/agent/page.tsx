@@ -5,7 +5,12 @@ import { agents } from "@/lib/db/schema";
 import { eq, desc } from "drizzle-orm";
 import { Bot } from "lucide-react";
 import Link from "next/link";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "AI Agent",
+  description: "GPT-4o destekli akıllı ajanlar ile sohbet edin.",
+};
 export default async function AgentPage() {
   const session = await auth();
   if (!session?.user?.id) redirect("/");

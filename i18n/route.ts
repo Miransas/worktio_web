@@ -1,14 +1,17 @@
-// /* eslint-disable @typescript-eslint/no-explicit-any */
+import { getRequestConfig } from "next-intl/server";
 
-// import { getRequestConfig } from 'next-intl/server';
-// import { notFound } from 'next/navigation';
+const locales = ["tr", "en", "uz"];
 
-// const locales = ['tr', 'en', 'de', 'uz', 'ru', 'ar'];
+export default getRequestConfig(async ({ requestLocale }) => {
+  let locale = await requestLocale;
+  
+  // Geçersiz locale varsa default'a dön
+  if (!locale || !locales.includes(locale)) {
+    locale = "tr";
+  }
 
-// export default getRequestConfig(async ({ locale }) => {
-//   if (!locales.includes(locale as any)) notFound();
-
-//   return {
-//     messages: (await import(`./messages/${locale}.json`)).default
-//   };
-// });
+  return {
+    locale,
+    messages: (await import(`../messages/${locale}.json`)).default,
+  };
+});

@@ -1,71 +1,210 @@
-import Link from "next/link"
+import Link from "next/link";
+import { Workflow, Github, Twitter, Youtube, MessageCircle } from "lucide-react";
+
+const MAIN_LINKS = {
+  Şirket: [
+    { label: "Hakkımızda", href: "/about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Kariyer", href: "/careers", badge: "Hiring" },
+    { label: "İletişim", href: "/contact" },
+    { label: "Basın", href: "/press" },
+  ],
+  Kaynaklar: [
+    { label: "Docs", href: "/docs" },
+    { label: "Changelog", href: "/changelog" },
+    { label: "Community", href: "/community" },
+    { label: "Destek", href: "/support" },
+    { label: "API Referansı", href: "/docs/api" },
+  ],
+  Karşılaştırma: [
+    { label: "Worktio vs n8n", href: "/blog/n8n-vs-worktio" },
+    { label: "Worktio vs Zapier", href: "/blog/zapier-vs-worktio" },
+    { label: "Worktio vs Make", href: "/blog/make-vs-worktio" },
+  ],
+  Yasal: [
+    { label: "Gizlilik", href: "/privacy" },
+    { label: "Kullanım Şartları", href: "/terms" },
+    { label: "Çerezler", href: "/cookies" },
+  ],
+};
+
+const INTEGRATIONS = [
+  "Gmail", "GitHub", "Slack", "Telegram", "Discord",
+  "PostgreSQL", "MySQL", "Redis", "Stripe", "Shopify",
+];
+
+const TRENDING = [
+  "Gmail + AI Sınıflandırma", "GitHub + Slack Bildirim",
+  "Stripe + CRM Sync", "Telegram Bot Oluştur",
+  "PostgreSQL + AI Analiz", "Shopify + Mail Kampanya",
+];
+
+const CATEGORIES = [
+  "İletişim", "Geliştirme", "Pazarlama",
+  "Veri & Depolama", "AI & ML", "E-Ticaret",
+];
+
+const GUIDES = [
+  "Telegram Botu Nasıl Kurulur?",
+  "Gmail Otomasyonu Rehberi",
+  "GPT-4o ile AI Agent",
+  "Webhook Trigger Kullanımı",
+  "Zapier Alternatifleri",
+  "n8n'den Geçiş Rehberi",
+];
 
 export default function Footer() {
-    const year = new Date().getFullYear()
   return (
-    <footer className="bg-black text-gray-400 border-t border-neutral-800">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
-
-        {/* Logo + description */}
-        <div>
-          <h2 className="text-white text-xl font-semibold tracking-wide">
-            Miransas & Worktio
-          </h2> 
-          <p className="mt-4 text-sm text-gray-500 leading-relaxed">
-            Building AI tools, games and modern software experiences.
-          </p>
-        </div>
-
-        {/* Product */}
-        <div>
-          <h3 className="text-white text-sm font-semibold mb-4">Products</h3>
-          <ul className="space-y-3 text-sm">
-            <li className="hover:text-white cursor-pointer">AI Tools</li>
-            <li className="hover:text-white cursor-pointer">Games</li>
-            <li className="hover:text-white cursor-pointer">API</li>
-          </ul>
-        </div>
-
-        {/* Company */}
-        <div>
-          <h3 className="text-white text-sm font-semibold mb-4">Company</h3>
-          <ul className="space-y-3 text-sm">
-            <li className="hover:text-white cursor-pointer">About</li>
-            <li className="hover:text-white cursor-pointer">Blog</li>
-            <li className="hover:text-white cursor-pointer">Careers</li>
-          </ul>
-        </div>
-
-        {/* Social */}
-        <div>
-          <h3 className="text-white text-sm font-semibold mb-4">Social</h3>
-          <ul className="space-y-3 text-sm">
-            <li className="hover:text-white cursor-pointer">GitHub</li>
-            <li className="hover:text-white cursor-pointer">Twitter</li>
-            <li className="hover:text-white cursor-pointer">Discord</li>
-          </ul>
-        </div>
-
-      </div>
-
-      {/* bottom */}
-      <div className="border-t border-neutral-800">
-        <Link href="https://miransas.com" className="flex gap-2">
-        <img src="./miransas.png" alt="" className="w-18 " />  
-        <p className="font-stretch-normal text-xl mt-9">© {year} Miransas. All rights reserved.</p>
-        </Link>
-
-        <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between text-sm text-gray-500">
-          <div>
-            aa
+    <footer className="bg-[#030303] border-t border-white/[0.06]">
+      {/* Ana footer */}
+       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-primary/10 blur-[100px] rounded-full" />
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
+          {/* Logo + sosyal */}
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <div
+                className="w-8 h-8 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg flex items-center justify-center"
+                style={{ boxShadow: "0 0 15px rgba(124,58,237,0.4)" }}
+              >
+                <Workflow size={16} className="text-white" />
+              </div>
+              <span className="font-black text-lg tracking-tighter uppercase italic text-white">
+                Worktio
+              </span>
+            </Link>
+            <p className="text-zinc-600 text-xs leading-relaxed mb-5">
+              Limitler olmadan otomatize et.
+            </p>
+            <div className="flex items-center gap-2">
+              {[
+                { icon: <Twitter size={14} />, href: "https://twitter.com" },
+                { icon: <Github size={14} />, href: "https://github.com" },
+                { icon: <MessageCircle size={14} />, href: "/community" },
+                { icon: <Youtube size={14} />, href: "https://youtube.com" },
+              ].map((s, i) => (
+                <a key={i} href={s.href}
+                  className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:bg-white/10 transition-all"
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
           </div>
-          <div className="flex gap-6">
-            <span className="hover:text-white cursor-pointer">Privacy</span>
-            <span className="hover:text-white cursor-pointer">Terms</span>
+
+          {/* Link kolonları */}
+          {Object.entries(MAIN_LINKS).map(([title, links]) => (
+            <div key={title}>
+              <h3 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-4">
+                {title}
+              </h3>
+              <ul className="space-y-2.5">
+                {links.map(link => (
+                  <li key={link.label}>
+                    <Link href={link.href}
+                      className="text-sm text-zinc-600 hover:text-white transition-colors flex items-center gap-2"
+                    >
+                      {link.label}
+                      {"badge" in link && link.badge && (
+                        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/20">
+                          {link.badge}
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Alt bölüm — entegrasyonlar */}
+        <div className="border-t border-white/[0.06] pt-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+            {/* Popüler entegrasyonlar */}
+            <div>
+              <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-4">
+                Popüler Entegrasyonlar
+              </h3>
+              <ul className="space-y-2">
+                {INTEGRATIONS.map(item => (
+                  <li key={item}>
+                    <Link href={`/docs/integrations/${item.toLowerCase()}`}
+                      className="text-xs text-zinc-700 hover:text-zinc-400 transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Trending kombinasyonlar */}
+            <div>
+              <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-4">
+                Popüler Kombinasyonlar
+              </h3>
+              <ul className="space-y-2">
+                {TRENDING.map(item => (
+                  <li key={item}>
+                    <Link href="/blog"
+                      className="text-xs text-zinc-700 hover:text-zinc-400 transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Kategoriler */}
+            <div>
+              <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-4">
+                Entegrasyon Kategorileri
+              </h3>
+              <ul className="space-y-2">
+                {CATEGORIES.map(item => (
+                  <li key={item}>
+                    <Link href="/docs"
+                      className="text-xs text-zinc-700 hover:text-zinc-400 transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Rehberler */}
+            <div>
+              <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-4">
+                Popüler Rehberler
+              </h3>
+              <ul className="space-y-2">
+                {GUIDES.map(item => (
+                  <li key={item}>
+                    <Link href="/blog"
+                      className="text-xs text-zinc-700 hover:text-zinc-400 transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* En alt bar */}
+        <div className="border-t border-white/[0.04] mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-zinc-700">
+            © 2026 Worktio. Tüm hakları saklıdır.
+          </p>
+          <div className="flex items-center gap-1 text-xs text-zinc-700">
+            Türkiye&rsquo;de <span className="text-red-500 mx-1">❤️</span> ile yapıldı
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
-

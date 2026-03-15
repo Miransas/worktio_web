@@ -3,21 +3,14 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Code2, Zap, Database, ArrowUpRight, Gamepad2 } from "lucide-react";
-import { useRouter } from "next/navigation"; // ─── Next.js Router EKLENDİ ───
+import { Brain, Bot, Cpu, ArrowUpRight, Sparkles } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-// ... (RustBadge, ArrowIcon, Beam, CircuitBeams, Chip, BorderBeam bileşenleri aynı kalıyor) ...
-const RustBadge = () => (
-  <svg width="14" height="14" viewBox="0 0 16 16" className="inline align-middle mx-[2px] mb-[3px]">
-    <circle cx="8" cy="8" r="7" stroke="#CE422B" strokeWidth="1.2" fill="none" />
-    <text x="8" y="11.5" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#CE422B">R</text>
-  </svg>
-);
-
-const ArrowIcon = () => (
-  <svg width="13" height="13" viewBox="0 0 14 14" className="inline ml-1 align-middle text-neutral-600">
-    <path d="M3 11L11 3M11 3H6M11 3V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
+// --- Küçük Badge Bileşenleri ---
+const AiBadge = () => (
+  <span className="inline-flex items-center px-1.5 py-0.5 mx-1 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20 align-middle">
+    GEN-AI
+  </span>
 );
 
 const Beam = ({ d, color, delay }: { d: string; color: string; delay: number }) => (
@@ -58,9 +51,9 @@ const Beam = ({ d, color, delay }: { d: string; color: string; delay: number }) 
 );
 
 const BEAM_PATHS = [
-  { d: "M 450 50 C 450 110, 155 110, 155 165", color: "#3B82F6", delay: 0 }, 
-  { d: "M 450 50 L 450 165",                   color: "#FF4F00", delay: 0.75 }, 
-  { d: "M 450 50 C 450 110, 745 110, 745 165", color: "#EAB308", delay: 1.5 }, 
+  { d: "M 450 50 C 450 110, 155 110, 155 165", color: "#A855F7", delay: 0 }, 
+  { d: "M 450 50 L 450 165",                   color: "#3B82F6", delay: 0.75 }, 
+  { d: "M 450 50 C 450 110, 745 110, 745 165", color: "#10B981", delay: 1.5 }, 
 ];
 
 const CircuitBeams = () => (
@@ -75,18 +68,11 @@ const CircuitBeams = () => (
   </svg>
 );
 
-
-
 const BorderBeam = ({ color, active, duration = 1.8 }: { color: string; active: boolean; duration?: number }) => {
   if (!active) return null;
   return (
     <div className="absolute inset-0 rounded-[16px] overflow-hidden pointer-events-none z-[2]">
-      <style>{`
-        @keyframes beam-spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
+      <style>{` @keyframes beam-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } } `}</style>
       <div 
         className="absolute inset-[-4px] rounded-[18px]"
         style={{
@@ -99,44 +85,40 @@ const BorderBeam = ({ color, active, duration = 1.8 }: { color: string; active: 
   );
 };
 
-
+// --- OTOMASYON AJANLARI İÇİN YENİ KARTLAR ---
 const CARDS = [
   {
-    icon: <Code2 className="text-blue-500" size={30} />,
-    title: "UI Engineering",
+    icon: <Brain className="text-purple-500" size={30} />,
+    title: "Agentic Reasoning",
+    accent: "#A855F7",
+    glow: "rgba(168,85,247,0.18)",
+    desc: <>LLM tabanlı karar mekanizmaları. Karmaşık görevleri alt parçalara bölen ve <AiBadge /> destekli mantıksal akışlar kuran ajan mimarisi.</>,
+    link: "/automation/reasoning",
+  },
+  {
+    icon: <Bot className="text-blue-500" size={30} />,
+    title: "Autonomous Execution",
     accent: "#3B82F6",
-    glow: "rgba(59,130,246,0.18)",
-    desc: <>High-performance, SEO-critical studio interfaces. Engineered using Next.js and React Server Components for maximum efficiency.</>,
-    link: "/projects", // ─── Linkleri temiz tutmakta fayda var
+    glow: "rgba(59,130,246,0.22)",
+    desc: <>API ve araçlar üzerinden kendi kendine işlem yapan operasyonel ajanlar. Gerçek zamanlı hata düzeltme ve otonom iş yürütme kapasitesi.</>,
+    link: "/automation/execution",
   },
   {
-    icon: <Zap className="text-[#FF4F00]" size={30} />,
-    title: "Systems Architecture",
-    accent: "#FF4F00",
-    glow: "rgba(255,79,0,0.22)",
-    desc: <>Low-level optimization powered by **Rust** <RustBadge /> and **Go**. driving memory-safe macOS VPN solutions.</>,
-    link: "/projects",
-  },
-  {
-    icon: <Gamepad2 className="text-yellow-500" size={30} />,
-    title: "Game Engines",
-    accent: "#EAB308",
-    glow: "rgba(234,179,8,0.18)",
-    desc: <>Propelling the **Lost Signal** universe. Typed data handling via Drizzle ORM interfacing with scalable distributed PostgreSQL nodes.</>,
-    link: "/games", // ─── Oyunlar sayfasına yönlendirir
+    icon: <Cpu className="text-emerald-500" size={30} />,
+    title: "RAG & Data Pipeline",
+    accent: "#10B981",
+    glow: "rgba(16,185,129,0.18)",
+    desc: <>Vektör veritabanları ile entegre, bağlam farkındalığı yüksek bilgi akışları. Ajanların doğru veriyle, doğru zamanda buluştuğu otomasyon köprüsü.</>,
+    link: "/automation/data",
   },
 ];
 
-
 const Card = ({ card, index, hovered, setHovered, beamActive }: any) => {
   const active = hovered === index;
-  const router = useRouter(); // ─── Router'ı başlattık ───
+  const router = useRouter();
 
-  // ─── Tıklama İşlevi (Click Handler) EKLENDİ ───
   const handleCardClick = () => {
-    if (card.link) {
-      router.push(card.link);
-    }
+    if (card.link) router.push(card.link);
   };
 
   return (
@@ -146,13 +128,12 @@ const Card = ({ card, index, hovered, setHovered, beamActive }: any) => {
       transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
       onHoverStart={() => setHovered(index)}
       onHoverEnd={() => setHovered(1)}
-      onClick={handleCardClick} // ─── onClick eventi karta eklendi ───
+      onClick={handleCardClick}
       className={cn(
-        "flex-1 min-w-[380px] max-w-[480px] p-12 rounded-2xl cursor-pointer relative overflow-hidden transition-all duration-300 group", // ─── group eklendi (iç ikon hoverları için)
-        "bg-gradient-to-br from-neutral-900 to-black border-1.5",
+        "flex-1 min-w-[320px] max-w-[400px] p-8 rounded-2xl cursor-pointer relative overflow-hidden transition-all duration-300 group",
+        "bg-gradient-to-br from-neutral-900 to-black border",
         active || beamActive ? "border-transparent" : "border-neutral-800",
-        active && "shadow-[0_20px_60px_rgba(0,0,0,0.7)]",
-        "selection:bg-[#FF4F00]/30"
+        active && "shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
       )}
       style={{ borderColor: active || beamActive ? card.accent : undefined }}
     >
@@ -169,22 +150,21 @@ const Card = ({ card, index, hovered, setHovered, beamActive }: any) => {
       </AnimatePresence>
 
       <div className="relative z-[4]">
-        <div className="mb-6 drop-shadow-[0_0_8px_currentColor]">{card.icon}</div>
+        <div className="mb-6 drop-shadow-[0_0_8px_currentColor] transition-transform duration-300 group-hover:scale-110">{card.icon}</div>
         <div className="flex items-center mb-2">
-          <span className="text-white text-lg font-bold tracking-tight uppercase font-mono">{card.title}</span>
+          <span className="text-white text-md font-bold tracking-wider uppercase font-mono">{card.title}</span>
           <motion.span 
-            animate={{ x: active ? 4 : 0, y: active ? -4 : 0 }} // ─── Ok animasyonu daha belirgin ───
-            className="text-neutral-600 transition-colors group-hover:text-white" // ─── Hover olunca ok rengi beyazlar ───
+            animate={{ x: active ? 4 : 0, y: active ? -4 : 0 }}
+            className="text-neutral-600 ml-2 group-hover:text-white"
           >
-            <ArrowUpRight size={18} />
+            <ArrowUpRight size={16} />
           </motion.span>
         </div>
-        <p className="text-neutral-500 text-sm leading-relaxed font-light">{card.desc}</p>
+        <div className="text-neutral-500 text-sm leading-relaxed font-light">{card.desc}</div>
       </div>
     </motion.div>
   );
 };
-
 
 function useBeamCycle() {
   const [active, setActive] = useState([false, false, false]);
@@ -213,20 +193,33 @@ export default function TechStackSections() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="h-[400px] bg-[#050505] flex flex-col items-center justify-center -mt-16 relative overflow-hidden selection:bg-[#FF4F00]/20 selection:text-white">
+    <section ref={ref} className="min-h-[500px] bg-[#050505] py-20 flex flex-col items-center justify-center relative overflow-hidden selection:bg-purple-500/30 selection:text-white">
+      {/* Grid Arka Plan */}
       <div className="absolute inset-0 opacity-[0.1] pointer-events-none" 
-        style={{ backgroundImage: `linear-gradient(#404040 1px, transparent 1px), linear-gradient(90deg, #404040 1px, transparent 1px)`, backgroundSize: "50px 50px" }} 
+        style={{ backgroundImage: `linear-gradient(#404040 1px, transparent 1px), linear-gradient(90deg, #404040 1px, transparent 1px)`, backgroundSize: "40px 40px" }} 
       />
 
-
-      <div className="relative w-full flex flex-col items-center">
+      <div className="relative w-full max-w-7xl px-6 flex flex-col items-center">
         
-        
-        <div className="relative w-full h-[180px] mt-[-56px] z-[5]">
-          {/* <CircuitBeams /> */}
+        {/* Üst Kısım: Merkezi İşlemci Görünümü */}
+        <div className="mb-12 text-center z-10">
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                className="w-16 h-16 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center mb-4 mx-auto shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+            >
+                <Sparkles className="text-white" size={24} />
+            </motion.div>
+            <h2 className="text-white font-mono text-xs tracking-[0.3em] uppercase opacity-50">Workflow Automation</h2>
         </div>
         
-        <div className="flex flex-wrap justify-center gap-6 w-full relative z-20">
+        {/* Işınlar (Beams) - Aktif Edildi */}
+        <div className="relative w-full h-[200px] mt-[-80px] z-[5]">
+          <CircuitBeams />
+        </div>
+        
+        {/* Kartlar */}
+        <div className="flex flex-wrap justify-center gap-8 w-full relative z-20">
           {CARDS.map((card, i) => (
             <Card key={i} card={card} index={i} hovered={hovered} setHovered={setHovered} beamActive={beamActive[i]} />
           ))}

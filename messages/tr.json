@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "features": "Özellikler",
+    "pricing": "Fiyatlar",
+    "docs": "Docs",
+    "blog": "Blog",
+    "changelog": "Changelog",
+    "support": "Destek",
+    "login": "Giriş Yap",
+    "start": "Ücretsiz Başla"
+  },
+  "hero": {
+    "badge": "n8n'den Daha Güçlü Otomasyon Platformu",
+    "title1": "Otomasyonu",
+    "title2": "Yeniden Düşün",
+    "desc": "Flow Builder + AI Agent + Gerçek zamanlı execution. GPT-4o ile zekice kararlar al, sürükle bırak ile karmaşık otomasyonlar kur.",
+    "cta1": "Ücretsiz Başla",
+    "cta2": "Demo İzle",
+    "badge1": "Kredi kartı gerekmez",
+    "badge2": "1000 execution ücretsiz",
+    "badge3": "2 dakikada kurulum"
+  },
+  "features": {
+    "badge": "Tüm özellikler dahili",
+    "title": "Dışarıdan eklenti",
+    "titleHighlight": "almanıza gerek yok",
+    "desc": "Flow Builder'dan AI Agent'a, webhook'tan Gmail entegrasyonuna — her şey burada."
+  },
+  "pricing": {
+    "title": "Basit",
+    "titleHighlight": "fiyatlandırma",
+    "desc": "Sürpriz yok. Gizli ücret yok.",
+    "monthly": "Aylık",
+    "yearly": "Yıllık",
+    "discount": "%20 indirim",
+    "current": "Mevcut Plan",
+    "free": "Sonsuza kadar ücretsiz"
+  },
+  "dashboard": {
+    "welcome": "Hoş geldin",
+    "subtitle": "Worktio mimarisi aktif. Bugün ne otomatize edelim?",
+    "flows": "Flow",
+    "executions": "Execution",
+    "agents": "Agent",
+    "successRate": "Başarı Oranı"
+  },
+  "sidebar": {
+    "overview": "Genel Bakış",
+    "flowBuilder": "Flow Builder",
+    "chat": "Sohbet",
+    "analytics": "Analytics",
+    "billing": "Faturalama",
+    "settings": "Ayarlar",
+    "executions": "Executions"
+  },
+  "common": {
+    "save": "Kaydet",
+    "delete": "Sil",
+    "cancel": "İptal",
+    "loading": "Yükleniyor...",
+    "error": "Hata oluştu",
+    "success": "Başarılı",
+    "back": "Geri"
+  }
+}

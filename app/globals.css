@@ -155,3 +155,13 @@
 *:focus-visible {
   @apply outline-none ring-2 ring-orange-500/50 ring-offset-2 ring-offset-[#050508] transition-shadow;
 }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html, body {
+    @apply h-full;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }

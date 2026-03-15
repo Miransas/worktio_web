@@ -14,7 +14,7 @@ const FEATURES = [
 export default function Features() {
   return (
     <section id="features" className="py-32 px-6 bg-[#030303]">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:border-white/10 transition-all overflow-hidden"
+              className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-10 hover:border-white/10 transition-all overflow-hidden"
             >
               {/* Glow effect on hover */}
               <div
