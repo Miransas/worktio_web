@@ -9,7 +9,7 @@ export default function DocsHeader() {
       <div className="flex items-center justify-between h-full max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-6">
           <Link href="/" className="text-xl font-bold text-white">
-            Logo
+           <img src="./logo.svg" alt="" className="w-18 h-18" />
           </Link>
           <span className="text-zinc-500 text-sm">Docs</span>
         </div>
