@@ -11,7 +11,7 @@ export default function DocsHeader() {
           <Link href="/" className="text-xl font-bold text-white">
            <img src="./logo.svg" alt="" className="w-18 h-18" />
           </Link>
-          <span className="text-zinc-500 text-sm">Docs</span>
+          {/* <span className="text-zinc-500 text-sm">Docs</span> */}
         </div>
         
         <div className="flex items-center gap-4">

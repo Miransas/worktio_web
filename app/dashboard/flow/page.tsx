@@ -5,11 +5,6 @@ import { useRouter } from "next/navigation";
 import { Plus, Workflow, Trash2, Loader2, Clock, Zap, Play, Copy } from "lucide-react";
 
 
-import type { Metadata } from "next";
-export const metadata: Metadata = {
-  title: "Flow Builder",
-  description: "Görsel otomasyon akışları oluşturun ve yönetin.",
-};
 
 type Flow = { id: string; name: string; updatedAt: string; nodes: any[]; edges: any[] };
 

@@ -2,7 +2,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Save, Loader2, Eye, EyeOff } from "lucide-react";
+import { Save, Loader2, Eye, EyeOff, ImagePlus, X } from "lucide-react";
 
 export default function BlogEditor({ initialData }: { initialData?: any }) {
     const router = useRouter();
@@ -54,16 +54,13 @@ export default function BlogEditor({ initialData }: { initialData?: any }) {
         { code: "en", label: "🇬🇧 English" },
         { code: "uz", label: "🇺🇿 O'zbek" },
     ];
-    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        if (!file) return;
-
-        // FileReader ile base64'e çevir (şimdilik)
-        const reader = new FileReader();
-        reader.onload = () => {
-            setForm(f => ({ ...f, coverImage: reader.result as string }));
-        };
-        reader.readAsDataURL(file);
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => setForm(f => ({ ...f, coverImage: reader.result as string }));
+            reader.readAsDataURL(file);
+        }
     };
 
     return (
@@ -138,26 +135,31 @@ export default function BlogEditor({ initialData }: { initialData?: any }) {
                         className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-purple-500"
                     />
                 </div>
+                {/* image */}
                 <div>
                     <label className="text-xs text-zinc-500 mb-1.5 block">Cover Image</label>
-                    <div className="flex items-center gap-3">
-                        {form.coverImage && (
-                            <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-zinc-700">
-                                <img src={form.coverImage} alt="" className="w-full h-full object-cover" />
+                    <div className={`relative flex flex-col items-center justify-center border-2 border-dashed rounded-2xl transition-all ${form.coverImage ? "border-purple-500/50 bg-purple-500/5" : "border-zinc-700 hover:border-purple-500/30 bg-zinc-900"
+                        }`} style={{ minHeight: "120px" }}>
+                        {form.coverImage ? (
+                            <div className="relative w-full p-2">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img src={form.coverImage} alt="" className="w-full h-32 object-cover rounded-xl" />
+                                <button
+                                    onClick={() => setForm(f => ({ ...f, coverImage: "" }))}
+                                    className="absolute top-4 right-4 bg-black/80 hover:bg-red-500 p-1.5 rounded-lg text-white transition-colors"
+                                >
+                                    <X size={14} />
+                                </button>
                             </div>
+                        ) : (
+                            <label className="flex flex-col items-center cursor-pointer py-6 w-full">
+                                <div className="p-3 rounded-xl bg-purple-500/10 mb-2">
+                                    <ImagePlus size={20} className="text-purple-400" />
+                                </div>
+                                <span className="text-xs text-zinc-600">Resim Seç</span>
+                                <input type="file" className="hidden" accept="image/*" onChange={handleImageChange} />
+                            </label>
                         )}
-                        <label className="flex-1 flex items-center justify-center gap-2 bg-zinc-900 border border-dashed border-zinc-700 hover:border-purple-500 rounded-xl px-3 py-3 cursor-pointer transition-colors text-sm text-zinc-500 hover:text-zinc-300">
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={e => setForm(f => ({
-                                    ...f,
-                                    slug: e.target.value.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")
-                                }))}
-                                className="hidden"
-                            />
-                            📁 Resim Seç
-                        </label>
                     </div>
                 </div>
             </div>

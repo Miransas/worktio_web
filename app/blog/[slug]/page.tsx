@@ -22,6 +22,17 @@ export default async function BlogPostPage({ params }: Props) {
       >
         <ArrowLeft size={12} /> Blog'a Dön
       </Link>
+      {/* Cover image — başlıktan önce ekle */}
+      {post.coverImage && (
+        <div className="w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={post.coverImage}
+            alt={post.titleTr}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
 
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
