@@ -10,7 +10,7 @@ import {
 import "@xyflow/react/dist/style.css";
 import { nodeTypes } from "@/components/flow/custom-nodes";
 import NodeConfigPanel from "@/components/flow/node-config-panel";
-import { Play, Save, Plus, Loader2, ArrowLeft, Copy, Clock, Search, X, CheckCircle, AlertCircle, Link } from "lucide-react";
+import { Play, Save, Plus, Loader2, ArrowLeft, Copy, Clock, Search, X, CheckCircle, AlertCircle, Link, Send } from "lucide-react";
 
 const NODE_MENU = [
   { type: "trigger",   label: "Trigger",      color: "text-amber-400" },
@@ -19,6 +19,7 @@ const NODE_MENU = [
   { type: "condition", label: "Koşul",         color: "text-emerald-400" },
   { type: "code",      label: "Kod Çalıştır",  color: "text-rose-400" },
   { type: "gmail",     label: "Gmail",         color: "text-red-400" },
+  { type: "telegram", label: "Telegram", icon: Send, color: "text-sky-400" },
 ];
 
 const defaultEdgeOptions = {

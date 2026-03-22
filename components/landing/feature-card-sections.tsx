@@ -113,7 +113,7 @@ const CARDS = [
 export default function FeatureCardsSection() {
   return (
    <>
-     <section className="py-24 px-6 bg-[#030303]" >
+     <section className="py-24 px-6 bg-[#000000]" >
       <div className="max-full mx-auto space-y-6">
         {CARDS.map((card, i) => (
           <FeatureCard key={i} {...card} />

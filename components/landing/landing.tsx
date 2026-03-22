@@ -19,7 +19,7 @@ export function Laserlanding() {
                 minHeight: '100vh',
                 position: 'relative',
                 overflow: 'hidden',
-                backgroundColor: '#060010'
+                backgroundColor: '#000000'
             }}
             onMouseMove={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();

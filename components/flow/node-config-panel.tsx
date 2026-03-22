@@ -8,30 +8,48 @@ type Props = {
   onUpdate: (id: string, data: Record<string, unknown>) => void;
 };
 
-const CONFIGS: Record<string, { label: string; fields: { key: string; label: string; type: string; placeholder?: string }[] }> = {
+const CONFIGS: Record<string, { label: string; fields: { key: string; label: string; type: string; placeholder?: string; options?: { value: string; label: string }[] }[] }> = {
   trigger: {
     label: "Trigger Ayarları",
     fields: [
       { key: "label", label: "İsim", type: "text", placeholder: "Başlangıç" },
-      { key: "triggerType", label: "Tetikleyici Tipi", type: "select" },
+      { key: "triggerType", label: "Tetikleyici Tipi", type: "select", options: [
+        { value: "manual", label: "Manuel" },
+        { value: "webhook", label: "Webhook" },
+        { value: "cron", label: "Zamanlayıcı" },
+      ]},
       { key: "cronExpression", label: "Cron (zamanlayıcı)", type: "text", placeholder: "0 9 * * *" },
     ],
   },
   ai: {
-    label: "AI / Gemini Ayarları",
+    label: "AI Ayarları",
     fields: [
       { key: "label", label: "İsim", type: "text", placeholder: "AI Adımı" },
+      { key: "model", label: "Model", type: "select", options: [
+        { value: "gpt-4o", label: "GPT-4o (OpenAI)" },
+        { value: "gpt-4o-mini", label: "GPT-4o Mini (OpenAI)" },
+        { value: "claude-3-5-sonnet-20241022", label: "Claude 3.5 Sonnet (Anthropic)" },
+        { value: "claude-3-haiku-20240307", label: "Claude 3 Haiku (Anthropic)" },
+        { value: "gemini-pro", label: "Gemini Pro (Google)" },
+        { value: "gemini-1.5-flash", label: "Gemini 1.5 Flash (Google)" },
+      ]},
       { key: "prompt", label: "Prompt", type: "textarea", placeholder: "Şunu yap..." },
-      { key: "model", label: "Model", type: "text", placeholder: "gemini-pro" },
     ],
   },
   http: {
     label: "HTTP İstek Ayarları",
     fields: [
       { key: "label", label: "İsim", type: "text", placeholder: "API Çağrısı" },
+      { key: "method", label: "Method", type: "select", options: [
+        { value: "GET", label: "GET" },
+        { value: "POST", label: "POST" },
+        { value: "PUT", label: "PUT" },
+        { value: "DELETE", label: "DELETE" },
+        { value: "PATCH", label: "PATCH" },
+      ]},
       { key: "url", label: "URL", type: "text", placeholder: "https://api.example.com" },
-      { key: "method", label: "Method", type: "text", placeholder: "GET" },
       { key: "headers", label: "Headers (JSON)", type: "textarea", placeholder: '{"Authorization": "Bearer ..."}' },
+      { key: "body", label: "Body (JSON)", type: "textarea", placeholder: '{"key": "value"}' },
     ],
   },
   condition: {
@@ -57,11 +75,24 @@ const CONFIGS: Record<string, { label: string; fields: { key: string; label: str
       { key: "body", label: "İçerik", type: "textarea", placeholder: "Merhaba..." },
     ],
   },
+  telegram: {
+    label: "Telegram Ayarları",
+    fields: [
+      { key: "label", label: "İsim", type: "text", placeholder: "Telegram Gönder" },
+      { key: "chatId", label: "Chat ID / Kanal", type: "text", placeholder: "@kanal veya -100xxxxxxx" },
+      { key: "messageType", label: "Mesaj Tipi", type: "select", options: [
+        { value: "text", label: "Metin" },
+        { value: "photo", label: "Resim" },
+        { value: "video", label: "Video" },
+      ]},
+      { key: "message", label: "Mesaj", type: "textarea", placeholder: "{{input.text}}" },
+      { key: "fileId", label: "File ID (resim/video için)", type: "text", placeholder: "{{input.fileId}}" },
+    ],
+  },
 };
 
 export default function NodeConfigPanel({ node, onClose, onUpdate }: Props) {
   if (!node) return null;
-
   const config = CONFIGS[node.type as string];
   if (!config) return null;
 
@@ -92,15 +123,15 @@ export default function NodeConfigPanel({ node, onClose, onUpdate }: Props) {
                 rows={4}
                 className="bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-purple-500 resize-none transition-colors font-mono"
               />
-            ) : field.type === "select" && field.key === "triggerType" ? (
+            ) : field.type === "select" ? (
               <select
-                value={data[field.key] ?? "manual"}
+                value={data[field.key] ?? field.options?.[0]?.value ?? ""}
                 onChange={e => handleChange(field.key, e.target.value)}
                 className="bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-200 focus:outline-none focus:border-purple-500 transition-colors"
               >
-                <option value="manual">Manuel</option>
-                <option value="webhook">Webhook</option>
-                <option value="cron">Zamanlayıcı</option>
+                {field.options?.map(opt => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
               </select>
             ) : (
               <input

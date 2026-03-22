@@ -1,19 +1,56 @@
 "use client";
 import { motion } from "framer-motion";
 import { Workflow, Brain, Zap, Globe, Code2, Mail } from "lucide-react";
+import { BorderBeam } from "../ui/border-beam";
 
 const FEATURES = [
-  { icon: Workflow, title: "Flow Builder", desc: "n8n'den güçlü görsel otomasyon. Sürükle, bırak, çalıştır.", color: "#7c3aed", glow: "rgba(124,58,237,0.3)" },
-  { icon: Brain, title: "AI Agent", desc: "GPT-4o destekli ajanlar. Web arama, kod çalıştırma, mail.", color: "#3b82f6", glow: "rgba(59,130,246,0.3)" },
-  { icon: Zap, title: "Anında Execution", desc: "Flowlarını tek tıkla çalıştır. Gerçek zamanlı sonuçlar.", color: "#f59e0b", glow: "rgba(245,158,11,0.3)" },
-  { icon: Globe, title: "Webhook Trigger", desc: "Dış servislerden flow tetikle. Sınırsız entegrasyon.", color: "#10b981", glow: "rgba(16,185,129,0.3)" },
-  { icon: Code2, title: "Kod Çalıştır", desc: "Flow içinde JavaScript çalıştır. Tam esneklik.", color: "#f43f5e", glow: "rgba(244,63,94,0.3)" },
-  { icon: Mail, title: "Gmail", desc: "Mail oku, gönder, kategorize et. Otomatik.", color: "#ef4444", glow: "rgba(239,68,68,0.3)" },
+  {
+    icon: Workflow,
+    title: "Flow Builder",
+    desc: "Build powerful workflows visually. Drag, drop, and automate anything.",
+    color: "#8b5cf6",
+    glow: "rgba(139,92,246,0.35)",
+  },
+  {
+    icon: Brain,
+    title: "AI Agents",
+    desc: "Autonomous GPT-4o agents that search, execute code, and take actions.",
+    color: "#3b82f6",
+    glow: "rgba(59,130,246,0.35)",
+  },
+  {
+    icon: Zap,
+    title: "Instant Execution",
+    desc: "Run workflows instantly with real-time results and zero latency feel.",
+    color: "#f59e0b",
+    glow: "rgba(245,158,11,0.35)",
+  },
+  {
+    icon: Globe,
+    title: "Event Triggers",
+    desc: "Trigger workflows via webhooks and external events. Fully extensible.",
+    color: "#10b981",
+    glow: "rgba(16,185,129,0.35)",
+  },
+  {
+    icon: Code2,
+    title: "Code Execution",
+    desc: "Run JavaScript inside workflows for maximum flexibility and control.",
+    color: "#f43f5e",
+    glow: "rgba(244,63,94,0.35)",
+  },
+  {
+    icon: Mail,
+    title: "Email Automation",
+    desc: "Send, read, and organize emails automatically within your flows.",
+    color: "#ef4444",
+    glow: "rgba(239,68,68,0.35)",
+  },
 ];
 
 export default function Features() {
   return (
-    <section id="features" className="py-32 px-6  bg-gradient-to-b from-[#030303] via-orange-950  to-[#1a1a1a] relative overflow-hidden">
+    <section id="features" className="py-32 px-6  bg-[#000000] relative overflow-hidden">
       <div className="max-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -31,6 +68,7 @@ export default function Features() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          
           {FEATURES.map((f, i) => (
             <motion.div
               key={i}
@@ -38,9 +76,22 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-10 hover:border-white/10 transition-all overflow-hidden"
+              className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-10 hover:border-white/10 transition-all overflow-hidden z-10"
             >
-              {/* Glow effect on hover */}
+              {/* Border beam burada olmalı */}
+              {/* <BorderBeam
+                duration={1}
+                size={700}
+                className="from-transparent via-red-500 to-transparent z-0"
+              />
+              <BorderBeam
+                duration={1}
+                delay={3}
+                size={700}
+                className="from-transparent via-blue-500 to-transparent"
+              /> */}
+
+              {/* Glow */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl"
                 style={{ background: `radial-gradient(circle at 50% 0%, ${f.glow} 0%, transparent 60%)` }}
@@ -52,6 +103,7 @@ export default function Features() {
               >
                 <f.icon size={22} style={{ color: f.color }} />
               </div>
+
               <h3 className="font-bold text-white text-lg mb-2">{f.title}</h3>
               <p className="text-zinc-500 text-sm leading-relaxed">{f.desc}</p>
             </motion.div>
