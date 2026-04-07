@@ -1,54 +1,23 @@
 "use client";
 import { motion } from "framer-motion";
 import { Workflow, Brain, Zap, Globe, Code2, Mail } from "lucide-react";
-import { BorderBeam } from "../ui/border-beam";
+import { useLocale } from "next-intl";
+import { getDictionary } from "@/lib/lang";
 
-const FEATURES = [
-  {
-    icon: Workflow,
-    title: "Flow Builder",
-    desc: "Build powerful workflows visually. Drag, drop, and automate anything.",
-    color: "#8b5cf6",
-    glow: "rgba(139,92,246,0.35)",
-  },
-  {
-    icon: Brain,
-    title: "AI Agents",
-    desc: "Autonomous GPT-4o agents that search, execute code, and take actions.",
-    color: "#3b82f6",
-    glow: "rgba(59,130,246,0.35)",
-  },
-  {
-    icon: Zap,
-    title: "Instant Execution",
-    desc: "Run workflows instantly with real-time results and zero latency feel.",
-    color: "#f59e0b",
-    glow: "rgba(245,158,11,0.35)",
-  },
-  {
-    icon: Globe,
-    title: "Event Triggers",
-    desc: "Trigger workflows via webhooks and external events. Fully extensible.",
-    color: "#10b981",
-    glow: "rgba(16,185,129,0.35)",
-  },
-  {
-    icon: Code2,
-    title: "Code Execution",
-    desc: "Run JavaScript inside workflows for maximum flexibility and control.",
-    color: "#f43f5e",
-    glow: "rgba(244,63,94,0.35)",
-  },
-  {
-    icon: Mail,
-    title: "Email Automation",
-    desc: "Send, read, and organize emails automatically within your flows.",
-    color: "#ef4444",
-    glow: "rgba(239,68,68,0.35)",
-  },
+const FEATURE_META = [
+  { icon: Workflow, color: "#8b5cf6", glow: "rgba(139,92,246,0.35)" },
+  { icon: Brain, color: "#3b82f6", glow: "rgba(59,130,246,0.35)" },
+  { icon: Zap, color: "#f59e0b", glow: "rgba(245,158,11,0.35)" },
+  { icon: Globe, color: "#10b981", glow: "rgba(16,185,129,0.35)" },
+  { icon: Code2, color: "#f43f5e", glow: "rgba(244,63,94,0.35)" },
+  { icon: Mail, color: "#ef4444", glow: "rgba(239,68,68,0.35)" },
 ];
 
 export default function Features() {
+  const locale = useLocale();
+  const copy = getDictionary(locale).landing.features;
+  const features = FEATURE_META.map((item, index) => ({ ...item, ...copy.items[index] }));
+
   return (
     <section id="features" className="py-32 px-6  bg-[#000000] relative overflow-hidden">
       <div className="max-full mx-auto">
@@ -59,17 +28,16 @@ export default function Features() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-4">
-            Her şey{" "}
+            {copy.title}{" "}
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              dahili
+              {copy.highlight}
             </span>
           </h2>
-          <p className="text-zinc-500 text-lg">Dışarıdan eklenti almanıza gerek yok.</p>
+          <p className="text-zinc-500 text-lg">{copy.description}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          
-          {FEATURES.map((f, i) => (
+          {features.map((f, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -78,20 +46,6 @@ export default function Features() {
               transition={{ delay: i * 0.1 }}
               className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-10 hover:border-white/10 transition-all overflow-hidden z-10"
             >
-              {/* Border beam burada olmalı */}
-              {/* <BorderBeam
-                duration={1}
-                size={700}
-                className="from-transparent via-red-500 to-transparent z-0"
-              />
-              <BorderBeam
-                duration={1}
-                delay={3}
-                size={700}
-                className="from-transparent via-blue-500 to-transparent"
-              /> */}
-
-              {/* Glow */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl"
                 style={{ background: `radial-gradient(circle at 50% 0%, ${f.glow} 0%, transparent 60%)` }}

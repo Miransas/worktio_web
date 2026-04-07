@@ -1,17 +1,14 @@
+import { cookies } from "next/headers";
 import { getRequestConfig } from "next-intl/server";
+import { defaultLocale, getDictionary, isValidLocale, localeCookieName } from "@/lib/lang";
 
-const locales = ["tr", "en", "uz"];
-
-export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
-  
-  // Geçersiz locale varsa default'a dön
-  if (!locale || !locales.includes(locale)) {
-    locale = "tr";
-  }
+export default getRequestConfig(async () => {
+  const cookieStore = await cookies();
+  const cookieLocale = cookieStore.get(localeCookieName)?.value;
+  const locale = cookieLocale && isValidLocale(cookieLocale) ? cookieLocale : defaultLocale;
 
   return {
     locale,
-    messages: (await import(`../messages/${locale}.json`)).default,
+    messages: getDictionary(locale),
   };
 });

@@ -12,6 +12,7 @@ import FeatureCardsSection from '../components/landing/feature-card-sections'
 import { Navbar } from '../components/landing/Navbar'
 import ConnectedCards from '../components/test/test'
 import WorktioShatterHero from '../components/landing/WorktioShatterHero'
+import { AnimatedCta } from '../components/landing/animated-cta'
 
 
 
@@ -20,20 +21,19 @@ import WorktioShatterHero from '../components/landing/WorktioShatterHero'
 const page = () => {
   return (
     <>
-      {/* <Header /> */}
       <Navbar />
-      <div className='pt-14'> 
-          <Laserlanding />
+      <div className='pt-14'>
+        <Laserlanding />
       </div>
-        <WorktioShatterHero />
-        {/* <TechStackSections /> */}
-        <Features />
-        <FeatureCardsSection />
-        <Testimonials/>
-        <Faq />
-        <CtaSection />
-        {/* <ConnectedCards/> */}
-       <Footer />
+      <WorktioShatterHero />
+      {/* <TechStackSections /> */}
+      <Features />
+      {/* <FeatureCardsSection /> */}
+      <AnimatedCta/>
+      <Testimonials />
+      <Faq />
+      <CtaSection />
+      <Footer />
     </>
   )
 }

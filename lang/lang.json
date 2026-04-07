@@ -1,0 +1,796 @@
+{
+  "en": {
+    "languages": {
+      "tr": "Turkce",
+      "en": "English",
+      "uz": "O'zbek"
+    },
+    "nav": {
+      "links": [
+        { "label": "Features", "href": "#features" },
+        { "label": "Pricing", "href": "/billing" },
+        { "label": "Docs", "href": "/docs" },
+        { "label": "Blog", "href": "/blog" },
+        { "label": "Changelog", "href": "/changelog" },
+        { "label": "Support", "href": "/support" }
+      ],
+      "login": "Login",
+      "startFree": "Start Free"
+    },
+    "landing": {
+      "hero": {
+        "provider": "Powered by Miransas",
+        "title1": "Rethink",
+        "title2": "Automation",
+        "description": "Flow Builder + AI Agent + real-time execution. More AI integrations are on the way.",
+        "primaryCta": "Dashboard",
+        "checks": [
+          "No credit card required",
+          "1000 free executions",
+          "Setup in 2 minutes"
+        ]
+      },
+      "howItWorks": {
+        "titleAccent": "How",
+        "title": "it works",
+        "steps": [
+          {
+            "title": "The user talks to the agent through the app, browser, or a phone call",
+            "description": null
+          },
+          {
+            "title": "User speech streams from the device to the agent",
+            "description": null
+          },
+          {
+            "title": "The agent receives the request and runs your business logic",
+            "description": "Built with LiveKit's open-source framework and deployable on your own infrastructure or LiveKit Cloud."
+          },
+          {
+            "title": "The agent responds back to the user",
+            "description": null
+          }
+        ],
+        "cards": [
+          {
+            "title": "User Input",
+            "labels": ["APP", "BROWSER", "PHONE"],
+            "activeLabel": "APP"
+          },
+          {
+            "title": "Speech Stream",
+            "labels": ["AUDIO", "VIDEO", "TEXT"],
+            "activeLabel": "AUDIO"
+          },
+          {
+            "title": "Agent Processing",
+            "labels": ["STT", "LLM", "TTS"],
+            "activeLabel": "LLM"
+          },
+          {
+            "title": "Response",
+            "labels": ["VOICE", "TEXT", "ACTION"],
+            "activeLabel": "VOICE"
+          }
+        ],
+        "docsButton": "View documentation"
+      },
+      "features": {
+        "title": "Everything",
+        "highlight": "built in",
+        "description": "No need to buy external plugins.",
+        "items": [
+          {
+            "title": "Flow Builder",
+            "desc": "Build powerful workflows visually. Drag, drop, and automate anything."
+          },
+          {
+            "title": "AI Agents",
+            "desc": "Autonomous GPT-4o agents that search, execute code, and take actions."
+          },
+          {
+            "title": "Instant Execution",
+            "desc": "Run workflows instantly with real-time results and zero lag feeling."
+          },
+          {
+            "title": "Event Triggers",
+            "desc": "Trigger workflows through webhooks and external events. Fully extensible."
+          },
+          {
+            "title": "Code Execution",
+            "desc": "Run JavaScript inside workflows for maximum flexibility and control."
+          },
+          {
+            "title": "Email Automation",
+            "desc": "Send, read, and organize emails automatically inside your flows."
+          }
+        ]
+      },
+      "featureCards": {
+        "cards": [
+          {
+            "tag": "Flow Builder",
+            "title": "Write code when needed, stay visual when it is enough",
+            "desc": "Most tools force you to choose between a visual builder and code. Worktio lets you use both.",
+            "bullets": [
+              "<strong>Drag and drop</strong> to create automation flows",
+              "Run <strong>JavaScript</strong> directly inside a flow",
+              "Automate every process with <strong>50+ node types</strong>"
+            ],
+            "ctaLabel": "Explore Flow Builder",
+            "visual": {
+              "windowTitle": "Flow Builder",
+              "nodes": ["Trigger", "AI Node", "Output"],
+              "lastExecution": "Last execution",
+              "successStatus": "Successful - 234ms"
+            }
+          },
+          {
+            "tag": "AI Agent",
+            "title": "Move fast. Break nothing.",
+            "desc": "Build with short feedback loops. Test every step, observe everything.",
+            "bullets": [
+              "Make smart decisions with <strong>GPT-4o</strong>",
+              "Built-in <strong>web search</strong> and code execution",
+              "Automatic actions with <strong>Gmail and Slack</strong> integrations"
+            ],
+            "ctaLabel": "Try AI Agent",
+            "visual": {
+              "model": "GPT-4o",
+              "request": "Categorize the invoices in my Gmail",
+              "connecting": "Connecting to your Gmail...",
+              "completed": "24 invoices found and categorized"
+            }
+          }
+        ]
+      },
+      "testimonials": {
+        "title": "What do",
+        "highlight": "users say?",
+        "description": "Thousands of users have built their automations with Worktio.",
+        "items": [
+          {
+            "name": "Ahmet Yilmaz",
+            "role": "Startup Founder",
+            "company": "TechFlow",
+            "text": "I switched from n8n and I am not going back. The AI agent feature is incredible. Hours of my week are now automated.",
+            "avatar": "AY",
+            "color": "from-purple-500 to-violet-600"
+          },
+          {
+            "name": "Selin Kaya",
+            "role": "Freelancer",
+            "company": "Indie",
+            "text": "Gmail automation saved me hours. Setup took five minutes and now everything runs automatically.",
+            "avatar": "SK",
+            "color": "from-blue-500 to-cyan-600"
+          },
+          {
+            "name": "Mert Demir",
+            "role": "SaaS Developer",
+            "company": "DevStudio",
+            "text": "The Flow Builder UI feels incredibly smooth. I recommended it to clients and they all loved it.",
+            "avatar": "MD",
+            "color": "from-emerald-500 to-teal-600"
+          },
+          {
+            "name": "Zeynep Arslan",
+            "role": "Marketing Manager",
+            "company": "GrowthCo",
+            "text": "We automated our social media workflow with the AI marketing module. The ROI is unreal.",
+            "avatar": "ZA",
+            "color": "from-rose-500 to-pink-600"
+          },
+          {
+            "name": "Can Ozturk",
+            "role": "Backend Developer",
+            "company": "CloudSoft",
+            "text": "We connected our entire CI/CD pipeline through webhook triggers. It works beautifully.",
+            "avatar": "CO",
+            "color": "from-amber-500 to-orange-600"
+          },
+          {
+            "name": "Elif Sahin",
+            "role": "Product Manager",
+            "company": "ProductLab",
+            "text": "The analytics page is genuinely useful. I can instantly see which automations are performing.",
+            "avatar": "ES",
+            "color": "from-indigo-500 to-purple-600"
+          }
+        ]
+      },
+      "faq": {
+        "title": "Frequently asked",
+        "highlight": "questions",
+        "description": "Answers to the questions you already have in mind.",
+        "items": [
+          {
+            "q": "What is different compared to n8n?",
+            "a": "Worktio includes a built-in AI Agent system. You can talk directly with GPT-4o and trigger your flows from there. It also offers a more modern UI and a faster execution engine."
+          },
+          {
+            "q": "How long does the free plan last?",
+            "a": "Forever. Start with 1000 executions per month and 5 flows, then move to Pro or Enterprise when you scale. No credit card required."
+          },
+          {
+            "q": "Which integrations are available?",
+            "a": "Gmail, GitHub, Slack, Webhook, HTTP API, and more. We add new integrations every month, and you can always contact support for missing ones."
+          },
+          {
+            "q": "Is my data safe?",
+            "a": "All data is stored in encrypted Neon PostgreSQL infrastructure. We use GDPR-friendly architecture, and credentials and API keys are encrypted separately."
+          },
+          {
+            "q": "What happens if I exceed the flow execution limit?",
+            "a": "The free plan includes 1000 executions per month. When you hit the limit, flows pause until you upgrade. There is no automatic charge."
+          },
+          {
+            "q": "Do you provide technical support?",
+            "a": "The free plan includes community support, Pro includes email support, and Enterprise includes priority support with SLA coverage."
+          }
+        ]
+      },
+      "cta": {
+        "badge": "Start now",
+        "title": "Start automating",
+        "highlight": "today",
+        "description": "No credit card required. Setup in 2 minutes. 1000 free executions.",
+        "primary": "Start Free",
+        "secondary": "Watch Demo"
+      }
+    },
+    "docs": {
+      "search": "Search..."
+    },
+    "dashboard": {
+      "header": {
+        "trial": "Trial: 14 days left",
+        "executions": "0/1000 executions",
+        "upgrade": "UPGRADE"
+      },
+      "sidebar": {
+        "menu": ["Overview", "Flow Builder", "Chat", "Analytics", "Billing", "Settings", "Executions"]
+      },
+      "stats": {
+        "flows": "Flows",
+        "executions": "Executions",
+        "agents": "Agents",
+        "success": "Success Rate"
+      },
+      "home": {
+        "systemOnline": "System online",
+        "welcome": "Welcome",
+        "subtitle": "Worktio is ready. What should we automate today?",
+        "modulesTitle": "Modules",
+        "launchAction": "Launch System",
+        "modules": [
+          { "title": "Flow Engine", "description": "Create and run visual automation flows.", "tag": "Core" },
+          { "title": "AI Agent", "description": "Chat with an intelligent GPT-4o powered agent.", "tag": "Beta" },
+          { "title": "AI Marketing", "description": "Analyze and generate social media content.", "tag": null },
+          { "title": "Product Lab", "description": "Validate new product ideas faster.", "tag": null },
+          { "title": "Smart Support", "description": "Answer support requests automatically.", "tag": null },
+          { "title": "Sales Hunter", "description": "Find leads and send emails automatically.", "tag": null }
+        ]
+      },
+      "recommendations": {
+        "aiTitle": "AI Recommendations",
+        "fallbackTitle": "Recommended Templates",
+        "templates": [
+          { "title": "Gmail -> AI Categorization", "description": "Categorize incoming emails automatically", "why": "Most popular automation" },
+          { "title": "Weekly Report Agent", "description": "Generate a report every Monday automatically", "why": "Saves time every week" },
+          { "title": "Customer Support Bot", "description": "Answer incoming questions with AI", "why": "24/7 support" }
+        ],
+        "flowLabel": "Flow",
+        "agentLabel": "Agent",
+        "agentPromptPrefix": "You are a custom assistant for"
+      }
+    },
+    "footer": {
+      "tagline": "Automate without limits.",
+      "sections": [
+        {
+          "title": "Company",
+          "links": [
+            { "label": "About", "href": "/about" },
+            { "label": "Blog", "href": "/blog" },
+            { "label": "Careers", "href": "/careers", "badge": "Hiring" },
+            { "label": "Contact", "href": "/contact" },
+            { "label": "Press", "href": "/press" }
+          ]
+        },
+        {
+          "title": "Resources",
+          "links": [
+            { "label": "Docs", "href": "/docs" },
+            { "label": "Changelog", "href": "/changelog" },
+            { "label": "Community", "href": "/community" },
+            { "label": "Support", "href": "/support" },
+            { "label": "API Reference", "href": "/docs/api" }
+          ]
+        },
+        {
+          "title": "Comparison",
+          "links": [
+            { "label": "Worktio vs n8n", "href": "/blog/n8n-vs-worktio" },
+            { "label": "Worktio vs Zapier", "href": "/blog/zapier-vs-worktio" },
+            { "label": "Worktio vs Make", "href": "/blog/make-vs-worktio" }
+          ]
+        },
+        {
+          "title": "Legal",
+          "links": [
+            { "label": "Privacy", "href": "/privacy" },
+            { "label": "Terms", "href": "/terms" },
+            { "label": "Cookies", "href": "/cookies" }
+          ]
+        }
+      ],
+      "integrationsTitle": "Popular Integrations",
+      "integrations": ["Gmail", "GitHub", "Slack", "Telegram", "Discord", "PostgreSQL", "MySQL", "Redis", "Stripe", "Shopify"],
+      "combinationsTitle": "Popular Combinations",
+      "combinations": ["Gmail + AI Classification", "GitHub + Slack Alerts", "Stripe + CRM Sync", "Build a Telegram Bot", "PostgreSQL + AI Analysis", "Shopify + Email Campaign"],
+      "categoriesTitle": "Integration Categories",
+      "categories": ["Communication", "Development", "Marketing", "Data & Storage", "AI & ML", "E-Commerce"],
+      "guidesTitle": "Popular Guides",
+      "guides": ["How to Build a Telegram Bot", "Gmail Automation Guide", "AI Agent with GPT-4o", "Using Webhook Triggers", "Zapier Alternatives", "Migration Guide from n8n"],
+      "copyright": "© 2026 Miransaas",
+      "madeBy": "Made by"
+    }
+  },
+  "tr": {
+    "languages": {
+      "tr": "Turkce",
+      "en": "English",
+      "uz": "O'zbek"
+    },
+    "nav": {
+      "links": [
+        { "label": "Ozellikler", "href": "#features" },
+        { "label": "Fiyatlar", "href": "/billing" },
+        { "label": "Docs", "href": "/docs" },
+        { "label": "Blog", "href": "/blog" },
+        { "label": "Changelog", "href": "/changelog" },
+        { "label": "Destek", "href": "/support" }
+      ],
+      "login": "Giris Yap",
+      "startFree": "Ucretsiz Basla"
+    },
+    "landing": {
+      "hero": {
+        "provider": "Miransas tarafindan desteklenir",
+        "title1": "Otomasyonu",
+        "title2": "Yeniden Dusun",
+        "description": "Flow Builder + AI Agent + gercek zamanli execution. Daha fazla AI entegrasyonu yolda.",
+        "primaryCta": "Dashboard",
+        "checks": ["Kredi karti gerekmez", "1000 execution ucretsiz", "2 dakikada kurulum"]
+      },
+      "howItWorks": {
+        "titleAccent": "Nasil",
+        "title": "calisir",
+        "steps": [
+          { "title": "Kullanici ajanla uygulama, tarayici veya telefon aramasi uzerinden konusur", "description": null },
+          { "title": "Kullanicinin sesi cihazdan ajana aktarilir", "description": null },
+          { "title": "Ajan istegi alir ve sizin is mantiginizi calistirir", "description": "LiveKit'in acik kaynak altyapisi ile kurulur ve kendi altyapinizda veya LiveKit Cloud uzerinde calisabilir." },
+          { "title": "Ajan kullaniciya yanit verir", "description": null }
+        ],
+        "cards": [
+          { "title": "Kullanici Girisi", "labels": ["UYGULAMA", "TARAYICI", "TELEFON"], "activeLabel": "UYGULAMA" },
+          { "title": "Ses Akisi", "labels": ["SES", "VIDEO", "METIN"], "activeLabel": "SES" },
+          { "title": "Ajan Isleme", "labels": ["STT", "LLM", "TTS"], "activeLabel": "LLM" },
+          { "title": "Yanit", "labels": ["SES", "METIN", "AKSIYON"], "activeLabel": "SES" }
+        ],
+        "docsButton": "Dokumantasyonu gor"
+      },
+      "features": {
+        "title": "Her sey",
+        "highlight": "dahili",
+        "description": "Disaridan eklenti almaniza gerek yok.",
+        "items": [
+          { "title": "Flow Builder", "desc": "Guclu is akislarini gorsel olarak kur. Surukle, birak ve her seyi otomatize et." },
+          { "title": "AI Agent", "desc": "Arama yapan, kod calistiran ve aksiyon alan otonom GPT-4o ajanlari." },
+          { "title": "Aninda Calisma", "desc": "Is akislarini gercek zamanli sonuc hissiyle aninda calistir." },
+          { "title": "Olay Tetikleyicileri", "desc": "Webhook ve dis olaylarla is akislarini tetikle. Tamamen esnek." },
+          { "title": "Kod Calistirma", "desc": "Maksimum esneklik ve kontrol icin flow icinde JavaScript calistir." },
+          { "title": "E-posta Otomasyonu", "desc": "Akislarinizin icinde e-postalari otomatik gonder, oku ve duzenle." }
+        ]
+      },
+      "featureCards": {
+        "cards": [
+          {
+            "tag": "Flow Builder",
+            "title": "Kod gerekince yaz, UI yetince gorsel kal",
+            "desc": "Diger araclar seni gorsel builder ile kod arasinda secim yapmaya zorlar. Worktio ikisini birlikte kullanir.",
+            "bullets": [
+              "<strong>Surukle birak</strong> ile otomasyon akislarini olustur",
+              "Flow icinde dogrudan <strong>JavaScript</strong> calistir",
+              "<strong>50+ node tipi</strong> ile her sureci otomatize et"
+            ],
+            "ctaLabel": "Flow Builder'i kesfet",
+            "visual": {
+              "windowTitle": "Flow Builder",
+              "nodes": ["Trigger", "AI Node", "Output"],
+              "lastExecution": "Son execution",
+              "successStatus": "Basarili - 234ms"
+            }
+          },
+          {
+            "tag": "AI Agent",
+            "title": "Hizli hareket et. Hicbir seyi bozma.",
+            "desc": "Kisa geri bildirim donguleri ile gelistir. Her adimi test et, her seyi izle.",
+            "bullets": [
+              "<strong>GPT-4o</strong> ile akilli kararlar al",
+              "Yerlesik <strong>web arama</strong> ve kod calistirma",
+              "<strong>Gmail ve Slack</strong> entegrasyonlari ile otomatik aksiyon"
+            ],
+            "ctaLabel": "AI Agent'i dene",
+            "visual": {
+              "model": "GPT-4o",
+              "request": "Gmailimdeki faturalari kategorize et",
+              "connecting": "Gmail hesabina baglaniyorum...",
+              "completed": "24 fatura bulundu ve kategorize edildi"
+            }
+          }
+        ]
+      },
+      "testimonials": {
+        "title": "Kullanicilar",
+        "highlight": "ne diyor?",
+        "description": "Binlerce kullanici otomasyonlarini Worktio ile kurdu.",
+        "items": [
+          { "name": "Ahmet Yilmaz", "role": "Startup Kurucusu", "company": "TechFlow", "text": "n8n'den gectim ve geri donmeyecegim. AI agent ozelligi inanilmaz. Haftalik saatlerimi otomatik hale getirdi.", "avatar": "AY", "color": "from-purple-500 to-violet-600" },
+          { "name": "Selin Kaya", "role": "Freelancer", "company": "Serbest", "text": "Gmail otomasyonu bana saatler kazandirdi. Kurulum bes dakika surdu ve simdi her sey otomatik ilerliyor.", "avatar": "SK", "color": "from-blue-500 to-cyan-600" },
+          { "name": "Mert Demir", "role": "SaaS Gelistirici", "company": "DevStudio", "text": "Flow Builder arayuzu cok akici. Musterilerime de oneriyorum ve cok memnun kaliyorlar.", "avatar": "MD", "color": "from-emerald-500 to-teal-600" },
+          { "name": "Zeynep Arslan", "role": "Pazarlama Muduru", "company": "GrowthCo", "text": "AI Marketing modulu ile sosyal medya akislarimizi otomatize ettik. ROI gercekten inanilmaz.", "avatar": "ZA", "color": "from-rose-500 to-pink-600" },
+          { "name": "Can Ozturk", "role": "Backend Gelistirici", "company": "CloudSoft", "text": "Webhook trigger ile tum CI/CD pipeline'imizi bagladik. Cok temiz calisiyor.", "avatar": "CO", "color": "from-amber-500 to-orange-600" },
+          { "name": "Elif Sahin", "role": "Urun Muduru", "company": "ProductLab", "text": "Analytics sayfasi gercekten ise yariyor. Hangi otomasyonlarin performans verdigini aninda gorebiliyorum.", "avatar": "ES", "color": "from-indigo-500 to-purple-600" }
+        ]
+      },
+      "faq": {
+        "title": "Sik sorulan",
+        "highlight": "sorular",
+        "description": "Aklinizdaki sorularin cevaplari burada.",
+        "items": [
+          { "q": "n8n'e gore farki ne?", "a": "Worktio'da yerlesik bir AI Agent sistemi bulunur. GPT-4o ile dogrudan konusabilir ve flow'larinizi oradan tetikleyebilirsiniz. Ayrica daha modern bir arayuz ve daha hizli bir execution engine sunar." },
+          { "q": "Ucretsiz plan ne kadar surer?", "a": "Sonsuza kadar. Ayda 1000 execution ve 5 flow ile baslayin, buyudukce Pro veya Enterprise'a gecin. Kredi karti gerekmez." },
+          { "q": "Hangi entegrasyonlar var?", "a": "Gmail, GitHub, Slack, Webhook, HTTP API ve daha fazlasi. Her ay yeni entegrasyon ekliyoruz; eksik bir sey varsa destek ekibine ulasabilirsiniz." },
+          { "q": "Verilerim guvende mi?", "a": "Tum veriler sifreli Neon PostgreSQL altyapisinda tutulur. GDPR uyumlu bir mimari kullaniyoruz ve credentials ile API key'ler ayrica sifrelenir." },
+          { "q": "Execution limiti asilirsa ne olur?", "a": "Ucretsiz plan ayda 1000 execution icerir. Limit dolunca flow'lar duraklar ve siz yukseltene kadar bekler. Otomatik ucretlendirme yapilmaz." },
+          { "q": "Teknik destek sagliyor musunuz?", "a": "Ucretsiz planda topluluk destegi, Pro'da e-posta destegi, Enterprise'da oncelikli destek ve SLA kapsami sunuyoruz." }
+        ]
+      },
+      "cta": {
+        "badge": "Hemen basla",
+        "title": "Otomasyona",
+        "highlight": "bugun basla",
+        "description": "Kredi karti gerekmez. 2 dakikada kurulum. 1000 execution ucretsiz.",
+        "primary": "Ucretsiz Basla",
+        "secondary": "Demoyu Izle"
+      }
+    },
+    "docs": {
+      "search": "Ara..."
+    },
+    "dashboard": {
+      "header": {
+        "trial": "Deneme: 14 gun kaldi",
+        "executions": "0/1000 execution",
+        "upgrade": "YUKSELT"
+      },
+      "sidebar": {
+        "menu": ["Genel Bakis", "Flow Builder", "Sohbet", "Analytics", "Faturalama", "Ayarlar", "Executions"]
+      },
+      "stats": {
+        "flows": "Flow",
+        "executions": "Execution",
+        "agents": "Agent",
+        "success": "Basari Orani"
+      },
+      "home": {
+        "systemOnline": "Sistem cevrimici",
+        "welcome": "Hos geldin",
+        "subtitle": "Worktio hazir. Bugun neyi otomatize edelim?",
+        "modulesTitle": "Moduller",
+        "launchAction": "Sistemi Baslat",
+        "modules": [
+          { "title": "Flow Engine", "description": "Gorsel otomasyon akislarini olustur ve calistir.", "tag": "Core" },
+          { "title": "AI Agent", "description": "GPT-4o destekli akilli ajan ile sohbet et.", "tag": "Beta" },
+          { "title": "AI Marketing", "description": "Sosyal medya iceriklerini analiz et ve uret.", "tag": null },
+          { "title": "Product Lab", "description": "Yeni urun fikirlerini daha hizli dogrula.", "tag": null },
+          { "title": "Smart Support", "description": "Destek taleplerini otomatik yanitla.", "tag": null },
+          { "title": "Sales Hunter", "description": "Potansiyel musterileri bul ve otomatik mail gonder.", "tag": null }
+        ]
+      },
+      "recommendations": {
+        "aiTitle": "AI Onerileri",
+        "fallbackTitle": "Onerilen Sablonlar",
+        "templates": [
+          { "title": "Gmail -> AI Kategorizasyon", "description": "Gelen mailleri otomatik kategorize et", "why": "En populer otomasyon" },
+          { "title": "Haftalik Rapor Ajani", "description": "Her Pazartesi otomatik rapor olustur", "why": "Her hafta zaman kazandirir" },
+          { "title": "Musteri Destek Botu", "description": "Gelen sorulari AI ile yanitla", "why": "7/24 destek" }
+        ],
+        "flowLabel": "Flow",
+        "agentLabel": "Agent",
+        "agentPromptPrefix": "Sen su icin ozellestirilmis bir asistansin"
+      }
+    },
+    "footer": {
+      "tagline": "Limit olmadan otomatize et.",
+      "sections": [
+        {
+          "title": "Sirket",
+          "links": [
+            { "label": "Hakkimizda", "href": "/about" },
+            { "label": "Blog", "href": "/blog" },
+            { "label": "Kariyer", "href": "/careers", "badge": "Hiring" },
+            { "label": "Iletisim", "href": "/contact" },
+            { "label": "Basin", "href": "/press" }
+          ]
+        },
+        {
+          "title": "Kaynaklar",
+          "links": [
+            { "label": "Docs", "href": "/docs" },
+            { "label": "Changelog", "href": "/changelog" },
+            { "label": "Community", "href": "/community" },
+            { "label": "Destek", "href": "/support" },
+            { "label": "API Referansi", "href": "/docs/api" }
+          ]
+        },
+        {
+          "title": "Karsilastirma",
+          "links": [
+            { "label": "Worktio vs n8n", "href": "/blog/n8n-vs-worktio" },
+            { "label": "Worktio vs Zapier", "href": "/blog/zapier-vs-worktio" },
+            { "label": "Worktio vs Make", "href": "/blog/make-vs-worktio" }
+          ]
+        },
+        {
+          "title": "Yasal",
+          "links": [
+            { "label": "Gizlilik", "href": "/privacy" },
+            { "label": "Kullanim Sartlari", "href": "/terms" },
+            { "label": "Cerezler", "href": "/cookies" }
+          ]
+        }
+      ],
+      "integrationsTitle": "Populer Entegrasyonlar",
+      "integrations": ["Gmail", "GitHub", "Slack", "Telegram", "Discord", "PostgreSQL", "MySQL", "Redis", "Stripe", "Shopify"],
+      "combinationsTitle": "Populer Kombinasyonlar",
+      "combinations": ["Gmail + AI Siniflandirma", "GitHub + Slack Bildirimi", "Stripe + CRM Senkron", "Telegram Bot Kur", "PostgreSQL + AI Analiz", "Shopify + E-posta Kampanyasi"],
+      "categoriesTitle": "Entegrasyon Kategorileri",
+      "categories": ["Iletisim", "Gelistirme", "Pazarlama", "Veri ve Depolama", "AI ve ML", "E-Ticaret"],
+      "guidesTitle": "Populer Rehberler",
+      "guides": ["Telegram Botu Nasil Kurulur", "Gmail Otomasyonu Rehberi", "GPT-4o ile AI Agent", "Webhook Trigger Kullanimi", "Zapier Alternatifleri", "n8n Gecis Rehberi"],
+      "copyright": "© 2026 Miransaas",
+      "madeBy": "Hazirlayan"
+    }
+  },
+  "uz": {
+    "languages": {
+      "tr": "Turkce",
+      "en": "English",
+      "uz": "O'zbek"
+    },
+    "nav": {
+      "links": [
+        { "label": "Xususiyatlar", "href": "#features" },
+        { "label": "Narxlar", "href": "/billing" },
+        { "label": "Docs", "href": "/docs" },
+        { "label": "Blog", "href": "/blog" },
+        { "label": "Changelog", "href": "/changelog" },
+        { "label": "Yordam", "href": "/support" }
+      ],
+      "login": "Kirish",
+      "startFree": "Bepul Boshlash"
+    },
+    "landing": {
+      "hero": {
+        "provider": "Miransas tomonidan quvvatlanadi",
+        "title1": "Avtomatlashtirishni",
+        "title2": "Qayta O'ylang",
+        "description": "Flow Builder + AI Agent + real-time ijro. Yana koproq AI integratsiyalari yolda.",
+        "primaryCta": "Dashboard",
+        "checks": ["Kredit karta kerak emas", "1000 bepul ijro", "2 daqiqada sozlash"]
+      },
+      "howItWorks": {
+        "titleAccent": "Qanday",
+        "title": "ishlaydi",
+        "steps": [
+          { "title": "Foydalanuvchi agent bilan ilova, brauzer yoki telefon qongirogi orqali gaplashadi", "description": null },
+          { "title": "Foydalanuvchi nutqi qurilmadan agentga uzatiladi", "description": null },
+          { "title": "Agent sorovni qabul qiladi va biznes mantiqingizni ishga tushiradi", "description": "LiveKit ochiq manbali freymvorki asosida quriladi va oz infratuzilmangizda yoki LiveKit Cloud'da ishga tushiriladi." },
+          { "title": "Agent foydalanuvchiga javob qaytaradi", "description": null }
+        ],
+        "cards": [
+          { "title": "Foydalanuvchi Kiritishi", "labels": ["ILOVA", "BRAUZER", "TELEFON"], "activeLabel": "ILOVA" },
+          { "title": "Nutq Oqimi", "labels": ["AUDIO", "VIDEO", "MATN"], "activeLabel": "AUDIO" },
+          { "title": "Agent Qayta Ishlovi", "labels": ["STT", "LLM", "TTS"], "activeLabel": "LLM" },
+          { "title": "Javob", "labels": ["OVOZ", "MATN", "ACTION"], "activeLabel": "OVOZ" }
+        ],
+        "docsButton": "Hujjatlarni korish"
+      },
+      "features": {
+        "title": "Hammasi",
+        "highlight": "ichki",
+        "description": "Tashqi plagin sotib olish shart emas.",
+        "items": [
+          { "title": "Flow Builder", "desc": "Kuchli ish oqimlarini vizual tarzda quring. Surib tashlang va hammasini avtomatlashtiring." },
+          { "title": "AI Agentlar", "desc": "Qidiruv qiladigan, kod bajaradigan va aksiyalar oladigan avtonom GPT-4o agentlari." },
+          { "title": "Tezkor Ijro", "desc": "Ish oqimlarini real vaqt natijasi hissi bilan darhol ishga tushiring." },
+          { "title": "Hodisa Triggerlari", "desc": "Webhook va tashqi hodisalar orqali ish oqimlarini ishga tushiring. Toliq kengaytiriladi." },
+          { "title": "Kod Bajarish", "desc": "Maksimal moslashuvchanlik va nazorat uchun flow ichida JavaScript ishlating." },
+          { "title": "Email Avtomatsiyasi", "desc": "Flow ichida email yuboring, oqing va avtomatik tartibga soling." }
+        ]
+      },
+      "featureCards": {
+        "cards": [
+          {
+            "tag": "Flow Builder",
+            "title": "Kerak bolsa kod yozing, yetarli bolsa vizual qoling",
+            "desc": "Kop vositalar sizni vizual builder va kod orasida tanlashga majbur qiladi. Worktio esa ikkalasini ham beradi.",
+            "bullets": [
+              "<strong>Surib tashlash</strong> orqali avtomatlashtirish oqimlarini yarating",
+              "Flow ichida togridan togri <strong>JavaScript</strong> ishlating",
+              "<strong>50+ node turi</strong> bilan har bir jarayonni avtomatlashtiring"
+            ],
+            "ctaLabel": "Flow Builder'ni korish",
+            "visual": {
+              "windowTitle": "Flow Builder",
+              "nodes": ["Trigger", "AI Node", "Output"],
+              "lastExecution": "Songgi ijro",
+              "successStatus": "Muvaffaqiyatli - 234ms"
+            }
+          },
+          {
+            "tag": "AI Agent",
+            "title": "Tez harakat qiling. Hech narsani buzmang.",
+            "desc": "Qisqa feedback sikllari bilan yarating. Har qadamni sinang, hammasini kuzating.",
+            "bullets": [
+              "<strong>GPT-4o</strong> bilan aqlli qarorlar qiling",
+              "Ichki <strong>web qidiruv</strong> va kod bajarish",
+              "<strong>Gmail va Slack</strong> integratsiyalari bilan avtomatik aksiyalar"
+            ],
+            "ctaLabel": "AI Agentni sinash",
+            "visual": {
+              "model": "GPT-4o",
+              "request": "Gmailimdagi fakturalarni kategoriyalash",
+              "connecting": "Gmail hisobingizga ulanmoqda...",
+              "completed": "24 ta faktura topildi va kategoriyalandi"
+            }
+          }
+        ]
+      },
+      "testimonials": {
+        "title": "Foydalanuvchilar",
+        "highlight": "nima deydi?",
+        "description": "Minglab foydalanuvchilar Worktio bilan oz avtomatlashtirishlarini qurdilar.",
+        "items": [
+          { "name": "Ahmet Yilmaz", "role": "Startup Asoschisi", "company": "TechFlow", "text": "n8n'dan otdim va ortga qaytmayman. AI agent funksiyasi juda kuchli. Haftalik vaqtimni avtomatlashtirdi.", "avatar": "AY", "color": "from-purple-500 to-violet-600" },
+          { "name": "Selin Kaya", "role": "Freelancer", "company": "Mustaqil", "text": "Gmail avtomatsiyasi menga bir necha soat vaqt tejadi. Sozlash besh daqiqa boldi, endi hammasi avtomatik.", "avatar": "SK", "color": "from-blue-500 to-cyan-600" },
+          { "name": "Mert Demir", "role": "SaaS Dasturchi", "company": "DevStudio", "text": "Flow Builder interfeysi juda silliq. Men uni mijozlarimga ham tavsiya qildim va ularning barchasi mamnun boldi.", "avatar": "MD", "color": "from-emerald-500 to-teal-600" },
+          { "name": "Zeynep Arslan", "role": "Marketing Menejeri", "company": "GrowthCo", "text": "AI Marketing moduli bilan ijtimoiy media oqimimizni avtomatlashtirdik. ROI juda kuchli.", "avatar": "ZA", "color": "from-rose-500 to-pink-600" },
+          { "name": "Can Ozturk", "role": "Backend Dasturchi", "company": "CloudSoft", "text": "Webhook trigger orqali butun CI/CD pipeline'imizni bogladik. Juda yaxshi ishlayapti.", "avatar": "CO", "color": "from-amber-500 to-orange-600" },
+          { "name": "Elif Sahin", "role": "Mahsulot Menejeri", "company": "ProductLab", "text": "Analytics sahifasi rostdan ham foydali. Qaysi avtomatlashtirishlar ishlayotganini birdan koraman.", "avatar": "ES", "color": "from-indigo-500 to-purple-600" }
+        ]
+      },
+      "faq": {
+        "title": "Kop soraladigan",
+        "highlight": "savollar",
+        "description": "Xayolingizdagi savollarga javoblar shu yerda.",
+        "items": [
+          { "q": "n8n'dan farqi nimada?", "a": "Worktio ichida AI Agent tizimi bor. Siz GPT-4o bilan togridan togri gaplasha olasiz va flow'laringizni shu yerdan ishga tushirasiz. Bundan tashqari, zamonaviyroq UI va tezroq execution engine taklif qiladi." },
+          { "q": "Bepul reja qancha davom etadi?", "a": "Doimiy. Oyiga 1000 execution va 5 flow bilan boshlang, keyin osgach Pro yoki Enterprise'ga oting. Kredit karta kerak emas." },
+          { "q": "Qaysi integratsiyalar mavjud?", "a": "Gmail, GitHub, Slack, Webhook, HTTP API va boshqalar. Har oy yangi integratsiyalar qoshiladi va yetishmayotganlari uchun yordamga yozishingiz mumkin." },
+          { "q": "Malumotlarim xavfsizmi?", "a": "Barcha malumotlar shifrlangan Neon PostgreSQL infratuzilmasida saqlanadi. GDPR'ga mos arxitekturadan foydalanamiz va credentials hamda API key'lar alohida shifrlanadi." },
+          { "q": "Execution limiti oshib ketsa nima boladi?", "a": "Bepul rejada oyiga 1000 execution mavjud. Limit tugaganda flow'lar toxtaydi va siz upgrade qilguncha kutadi. Avtomatik tolov olinmaydi." },
+          { "q": "Texnik yordam bormi?", "a": "Bepul rejada community yordami, Pro'da email support, Enterprise'da esa ustuvor yordam va SLA qamrovi mavjud." }
+        ]
+      },
+      "cta": {
+        "badge": "Hozir boshlang",
+        "title": "Avtomatlashtirishni",
+        "highlight": "bugun boshlang",
+        "description": "Kredit karta kerak emas. 2 daqiqada sozlash. 1000 bepul ijro.",
+        "primary": "Bepul Boshlash",
+        "secondary": "Demo Korish"
+      }
+    },
+    "docs": {
+      "search": "Qidirish..."
+    },
+    "dashboard": {
+      "header": {
+        "trial": "Sinov: 14 kun qoldi",
+        "executions": "0/1000 ijro",
+        "upgrade": "UPGRADE"
+      },
+      "sidebar": {
+        "menu": ["Umumiy Korinish", "Flow Builder", "Chat", "Analytics", "Tolov", "Sozlamalar", "Executions"]
+      },
+      "stats": {
+        "flows": "Flow",
+        "executions": "Ijrolar",
+        "agents": "Agentlar",
+        "success": "Muvaffaqiyat Darajasi"
+      },
+      "home": {
+        "systemOnline": "Tizim online",
+        "welcome": "Xush kelibsiz",
+        "subtitle": "Worktio tayyor. Bugun nimani avtomatlashtiramiz?",
+        "modulesTitle": "Modullar",
+        "launchAction": "Tizimni Ishga Tushirish",
+        "modules": [
+          { "title": "Flow Engine", "description": "Vizual avtomatlashtirish oqimlarini yarating va ishga tushiring.", "tag": "Core" },
+          { "title": "AI Agent", "description": "GPT-4o asosidagi aqlli agent bilan suhbat qiling.", "tag": "Beta" },
+          { "title": "AI Marketing", "description": "Ijtimoiy media kontentini tahlil qiling va yarating.", "tag": null },
+          { "title": "Product Lab", "description": "Yangi mahsulot g'oyalarini tezroq tasdiqlang.", "tag": null },
+          { "title": "Smart Support", "description": "Support sorovlariga avtomatik javob bering.", "tag": null },
+          { "title": "Sales Hunter", "description": "Lidlarni toping va avtomatik email yuboring.", "tag": null }
+        ]
+      },
+      "recommendations": {
+        "aiTitle": "AI Tavsiyalari",
+        "fallbackTitle": "Tavsiya Qilingan Shablonlar",
+        "templates": [
+          { "title": "Gmail -> AI Kategoriyalash", "description": "Kiruvchi email'larni avtomatik kategoriyalash", "why": "Eng mashhur avtomatlashtirish" },
+          { "title": "Haftalik Hisobot Agenti", "description": "Har dushanba avtomatik hisobot yaratish", "why": "Har hafta vaqt tejaydi" },
+          { "title": "Mijozlarni Qollab-quvvatlash Boti", "description": "Kiruvchi savollarga AI bilan javob berish", "why": "24/7 yordam" }
+        ],
+        "flowLabel": "Flow",
+        "agentLabel": "Agent",
+        "agentPromptPrefix": "Siz quyidagi vazifa uchun maxsus assistant siz"
+      }
+    },
+    "footer": {
+      "tagline": "Cheklovlarsiz avtomatlashtiring.",
+      "sections": [
+        {
+          "title": "Kompaniya",
+          "links": [
+            { "label": "Biz Haqimizda", "href": "/about" },
+            { "label": "Blog", "href": "/blog" },
+            { "label": "Karyera", "href": "/careers", "badge": "Hiring" },
+            { "label": "Aloqa", "href": "/contact" },
+            { "label": "Matbuot", "href": "/press" }
+          ]
+        },
+        {
+          "title": "Resurslar",
+          "links": [
+            { "label": "Docs", "href": "/docs" },
+            { "label": "Changelog", "href": "/changelog" },
+            { "label": "Community", "href": "/community" },
+            { "label": "Yordam", "href": "/support" },
+            { "label": "API Reference", "href": "/docs/api" }
+          ]
+        },
+        {
+          "title": "Taqqoslash",
+          "links": [
+            { "label": "Worktio vs n8n", "href": "/blog/n8n-vs-worktio" },
+            { "label": "Worktio vs Zapier", "href": "/blog/zapier-vs-worktio" },
+            { "label": "Worktio vs Make", "href": "/blog/make-vs-worktio" }
+          ]
+        },
+        {
+          "title": "Huquqiy",
+          "links": [
+            { "label": "Maxfiylik", "href": "/privacy" },
+            { "label": "Foydalanish Shartlari", "href": "/terms" },
+            { "label": "Cookie'lar", "href": "/cookies" }
+          ]
+        }
+      ],
+      "integrationsTitle": "Mashhur Integratsiyalar",
+      "integrations": ["Gmail", "GitHub", "Slack", "Telegram", "Discord", "PostgreSQL", "MySQL", "Redis", "Stripe", "Shopify"],
+      "combinationsTitle": "Mashhur Kombinatsiyalar",
+      "combinations": ["Gmail + AI Tasniflash", "GitHub + Slack Bildirishnomalari", "Stripe + CRM Sinxron", "Telegram Bot Yaratish", "PostgreSQL + AI Tahlil", "Shopify + Email Kampaniya"],
+      "categoriesTitle": "Integratsiya Kategoriyalari",
+      "categories": ["Aloqa", "Dasturlash", "Marketing", "Malumot va Saqlash", "AI va ML", "E-Commerce"],
+      "guidesTitle": "Mashhur Qollanmalar",
+      "guides": ["Telegram Botni Qanday Yaratish", "Gmail Avtomatsiyasi Qollanmasi", "GPT-4o bilan AI Agent", "Webhook Trigger'dan Foydalanish", "Zapier Alternativalari", "n8n'dan O'tish Qollanmasi"],
+      "copyright": "© 2026 Miransaas",
+      "madeBy": "Muallif"
+    }
+  }
+}

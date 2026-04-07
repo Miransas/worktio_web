@@ -1,7 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Loader2, Sparkles, Zap, Bot, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
+import { getDictionary } from "@/lib/lang";
 
 type Recommendation = {
   title: string;
@@ -11,47 +13,31 @@ type Recommendation = {
   why: string;
 };
 
-const STATIC_TEMPLATES = [
-  {
-    title: "Gmail → AI Kategorizasyon",
-    description: "Gelen mailleri otomatik kategorize et",
-    category: "flow" as const,
-    icon: "📧",
-    why: "En popüler otomasyon",
-  },
-  {
-    title: "Haftalık Rapor Ajansı",
-    description: "Her Pazartesi otomatik rapor oluştur",
-    category: "flow" as const,
-    icon: "📊",
-    why: "Zaman kazandırır",
-  },
-  {
-    title: "Müşteri Destek Botu",
-    description: "Gelen soruları AI ile yanıtla",
-    category: "agent" as const,
-    icon: "🤖",
-    why: "7/24 destek",
-  },
-];
-
 export default function DashboardRecommendations() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [loading, setLoading] = useState(true);
   const [aiGenerated, setAiGenerated] = useState(false);
   const router = useRouter();
+  const locale = useLocale();
+  const copy = getDictionary(locale).dashboard.recommendations;
+  const staticTemplates = useMemo<Recommendation[]>(
+    () => [
+      { ...copy.templates[0], category: "flow", icon: "📧" },
+      { ...copy.templates[1], category: "flow", icon: "📊" },
+      { ...copy.templates[2], category: "agent", icon: "🤖" },
+    ],
+    [copy]
+  );
 
   useEffect(() => {
     fetch("/api/dashboard/recommendations")
-      .then(r => r.json())
-      .then(data => {
-        setRecommendations(
-          data.recommendations?.length > 0 ? data.recommendations : STATIC_TEMPLATES
-        );
+      .then((r) => r.json())
+      .then((data) => {
+        setRecommendations(data.recommendations?.length > 0 ? data.recommendations : staticTemplates);
         setAiGenerated(data.aiGenerated);
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [locale, staticTemplates]);
 
   const handleCreate = async (rec: Recommendation) => {
     if (rec.category === "flow") {
@@ -68,7 +54,7 @@ export default function DashboardRecommendations() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: rec.title,
-          systemPrompt: `Sen ${rec.title} için özelleştirilmiş bir asistansın. ${rec.description}`,
+          systemPrompt: `${copy.agentPromptPrefix} ${rec.title}. ${rec.description}`,
           model: "gpt-4o",
           tools: [],
         }),
@@ -83,7 +69,7 @@ export default function DashboardRecommendations() {
       <div className="flex items-center gap-2 mb-4">
         <Sparkles size={16} className="text-purple-400" />
         <h2 className="text-sm font-semibold text-zinc-300">
-          {aiGenerated ? "AI Önerileri" : "Önerilen Şablonlar"}
+          {aiGenerated ? copy.aiTitle : copy.fallbackTitle}
         </h2>
         {loading && <Loader2 size={12} className="animate-spin text-zinc-500" />}
         {aiGenerated && (
@@ -114,7 +100,7 @@ export default function DashboardRecommendations() {
                       : "bg-blue-500/20 text-blue-400"
                   }`}>
                     {rec.category === "flow" ? <Zap size={10} className="inline mr-1" /> : <Bot size={10} className="inline mr-1" />}
-                    {rec.category === "flow" ? "Flow" : "Agent"}
+                    {rec.category === "flow" ? copy.flowLabel : copy.agentLabel}
                   </span>
                 </div>
                 <ArrowRight size={14} className="text-zinc-600 group-hover:text-purple-400 transition-colors" />

@@ -2,62 +2,23 @@
 
 import { useRef, useEffect, useState } from "react"
 import { Phone, Mic, Cpu, MessageSquare } from "lucide-react"
-import { BorderBeam } from "@/components/ui/border-beam"
-
-const steps = [
-  {
-    number: 1,
-    title: "User speaks to agent via app, browser, or phone call",
-    description: null,
-    icon: Phone,
-  },
-  {
-    number: 2,
-    title: "User speech is streamed from device to agent",
-    description: null,
-    icon: Mic,
-  },
-  {
-    number: 3,
-    title: "Agent receives user speech and runs your custom business logic",
-    description:
-      "Built using LiveKit's open source framework and deployed on your infrastructure or LiveKit Cloud.",
-    icon: Cpu,
-  },
-  {
-    number: 4,
-    title: "Agent responds back to the user",
-    description: null,
-    icon: MessageSquare,
-  },
-]
-
-const cardContents = [
-  {
-    title: "User Input",
-    labels: ["APP", "BROWSER", "PHONE"],
-    activeLabel: "APP",
-  },
-  {
-    title: "Speech Stream",
-    labels: ["AUDIO", "VIDEO", "TEXT"],
-    activeLabel: "AUDIO",
-  },
-  {
-    title: "Agent Processing",
-    labels: ["STT", "LLM", "TTS"],
-    activeLabel: "LLM",
-  },
-  {
-    title: "Response",
-    labels: ["VOICE", "TEXT", "ACTION"],
-    activeLabel: "VOICE",
-  },
-]
+import { useLocale } from "next-intl"
+import { getDictionary } from "@/lib/lang"
 
 export default function HowItWorks() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [activeStep, setActiveStep] = useState(0)
+  const locale = useLocale()
+  const copy = getDictionary(locale).landing.howItWorks
+
+  const steps = [
+    { number: 1, icon: Phone, ...copy.steps[0] },
+    { number: 2, icon: Mic, ...copy.steps[1] },
+    { number: 3, icon: Cpu, ...copy.steps[2] },
+    { number: 4, icon: MessageSquare, ...copy.steps[3] },
+  ]
+
+  const cardContents = copy.cards
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,13 +29,11 @@ export default function HowItWorks() {
       const containerHeight = container.offsetHeight
       const windowHeight = window.innerHeight
 
-      // Calculate scroll progress within the container
       const scrollProgress = Math.max(
         0,
         Math.min(1, -rect.top / (containerHeight - windowHeight))
       )
 
-      // Determine active step based on scroll progress
       const stepIndex = Math.min(
         steps.length - 1,
         Math.floor(scrollProgress * steps.length)
@@ -86,11 +45,10 @@ export default function HowItWorks() {
     handleScroll()
 
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [steps.length])
 
   return (
     <div className="min-h-screen bg-[#000000]">
-      {/* How it works section */}
       <div
         ref={containerRef}
         className="relative"
@@ -99,15 +57,11 @@ export default function HowItWorks() {
         <div className="sticky top-0 h-screen flex items-center">
           <div className="w-full max-w-7xl mx-auto px-8 lg:px-16 overflow-visible">
             <div className="relative rounded-2xl  bg-[#000000] backdrop-blur-sm p-8 lg:p-16 border border-white/[0.06]">
-              {/* Border Beam Effect */}
-             
-            
               <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-                {/* Left side - Steps */}
                 <div className="space-y-8">
                   <h2 className="text-4xl lg:text-5xl font-light mb-12">
-                    <span className="text-cyan-400">How</span>{" "}
-                    <span className="text-white">it works</span>
+                    <span className="text-cyan-400">{copy.titleAccent}</span>{" "}
+                    <span className="text-white">{copy.title}</span>
                   </h2>
 
                   <div className="space-y-6">
@@ -115,9 +69,7 @@ export default function HowItWorks() {
                       <div
                         key={step.number}
                         className={`flex gap-4 transition-all duration-500 ${
-                          activeStep === index
-                            ? "opacity-100"
-                            : "opacity-40"
+                          activeStep === index ? "opacity-100" : "opacity-40"
                         }`}
                       >
                         <div
@@ -132,9 +84,7 @@ export default function HowItWorks() {
                         <div className="space-y-2">
                           <h3
                             className={`font-medium transition-colors duration-500 ${
-                              activeStep === index
-                                ? "text-white"
-                                : "text-zinc-500"
+                              activeStep === index ? "text-white" : "text-zinc-500"
                             }`}
                           >
                             {step.title}
@@ -149,7 +99,6 @@ export default function HowItWorks() {
                     ))}
                   </div>
 
-                  {/* Buttons */}
                   <div className="flex flex-wrap gap-4 pt-8">
                     <button className="bg-white text-black hover:text-white flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700 hover:bg-[#000000] transition-colors text-sm">
                       <svg
@@ -165,7 +114,7 @@ export default function HowItWorks() {
                           d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                         />
                       </svg>
-                      View documentation
+                      {copy.docsButton}
                     </button>
                     <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700 text-zinc-300 hover:bg-zinc-800 transition-colors text-sm">
                       <svg
@@ -181,9 +130,7 @@ export default function HowItWorks() {
                   </div>
                 </div>
 
-                {/* Right side - Visual Cards */}
                 <div className="relative flex items-center justify-center min-h-[400px]">
-                  {/* Background grid pattern */}
                   <div className="absolute inset-0 opacity-20">
                     <div
                       className="w-full h-full"
@@ -194,7 +141,6 @@ export default function HowItWorks() {
                     />
                   </div>
 
-                  {/* 3D Card Stack */}
                   <div className="relative w-full h-[400px]" style={{ perspective: "1000px" }}>
                     {cardContents.map((card, index) => {
                       const isActive = activeStep === index
@@ -223,7 +169,6 @@ export default function HowItWorks() {
                                 : "bg-zinc-900/60 border-zinc-700/50"
                             }`}
                           >
-                            {/* Card Header */}
                             <div className="flex items-center justify-between mb-6">
                               <div className="flex items-center gap-3">
                                 <div
@@ -257,9 +202,7 @@ export default function HowItWorks() {
                               </div>
                             </div>
 
-                            {/* Card Content */}
                             <div className="space-y-4">
-                              {/* Labels */}
                               <div className="flex flex-wrap gap-2">
                                 {card.labels.map((label) => (
                                   <span
@@ -275,7 +218,6 @@ export default function HowItWorks() {
                                 ))}
                               </div>
 
-                              {/* Visual representation */}
                               <div className="mt-8 space-y-3">
                                 {[1, 2, 3].map((line) => (
                                   <div
@@ -301,15 +243,12 @@ export default function HowItWorks() {
                                 ))}
                               </div>
 
-                              {/* Connection lines */}
                               <div className="absolute bottom-6 right-6 flex items-end gap-1">
                                 {[1, 2, 3, 4, 5].map((bar) => (
                                   <div
                                     key={bar}
                                     className={`w-1.5 rounded-t transition-all duration-500 ${
-                                      isActive
-                                        ? "bg-orange-500"
-                                        : "bg-zinc-700"
+                                      isActive ? "bg-orange-500" : "bg-zinc-700"
                                     }`}
                                     style={{
                                       height: `${bar * 8 + 4}px`,
@@ -325,7 +264,6 @@ export default function HowItWorks() {
                     })}
                   </div>
 
-                  {/* Floating labels */}
                   <div
                     className={`absolute -right-4 top-1/4 text-xs text-zinc-600 tracking-widest transform rotate-12 transition-opacity duration-500 ${
                       activeStep >= 2 ? "opacity-100" : "opacity-0"
@@ -346,8 +284,6 @@ export default function HowItWorks() {
           </div>
         </div>
       </div>
-
-     
     </div>
   )
 }

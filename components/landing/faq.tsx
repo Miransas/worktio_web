@@ -2,35 +2,10 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useLocale } from "next-intl";
+import { getDictionary } from "@/lib/lang";
 
-const FAQ = [
-  {
-    q: "n8n'den farkı ne?",
-    a: "Worktio'nun yerleşik AI Agent sistemi var. GPT-4o ile doğrudan konuşabilir, flowlarınızı tetikleyebilirsiniz. n8n'de bu özellik yok. Ayrıca Worktio daha modern bir UI ve daha hızlı execution engine sunuyor.",
-  },
-  {
-    q: "Ücretsiz plan ne kadar sürer?",
-    a: "Süresiz ücretsiz. 1000 execution/ay ve 5 flow ile başlayın, büyüdükçe Pro veya Enterprise'a geçin. Kredi kartı gerekmez.",
-  },
-  {
-    q: "Hangi entegrasyonlar var?",
-    a: "Gmail, GitHub, Slack, Webhook, HTTP API ve daha fazlası. Her ay yeni entegrasyon ekliyoruz. Eksik entegrasyon için destek ekibimize yazabilirsiniz.",
-  },
-  {
-    q: "Verilerim güvende mi?",
-    a: "Tüm veriler Neon PostgreSQL'de şifreli saklanır. GDPR uyumlu altyapı kullanıyoruz. Credentials ve API key'ler ayrıca encrypt edilir.",
-  },
-  {
-    q: "Flow çalıştırma limiti aşılırsa ne olur?",
-    a: "Free planda 1000 execution/ay hakkınız var. Limit dolunca flowlar duraklatılır, siz de Pro'ya geçene kadar beklenir. Otomatik ücretlendirme yapılmaz.",
-  },
-  {
-    q: "Teknik destek var mı?",
-    a: "Free planda topluluk desteği, Pro'da email desteği, Enterprise'da öncelikli destek ve SLA garantisi sunuyoruz.",
-  },
-];
-
-function FaqItem({ item, i }: { item: typeof FAQ[0]; i: number }) {
+function FaqItem({ item, i }: { item: { q: string; a: string }; i: number }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -73,6 +48,8 @@ function FaqItem({ item, i }: { item: typeof FAQ[0]; i: number }) {
 export default function Faq() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
+  const locale = useLocale();
+  const copy = getDictionary(locale).landing.faq;
 
   return (
     <section id="faq" className="py-32 px-6 bg-[#030303]">
@@ -84,16 +61,16 @@ export default function Faq() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-4">
-            Sık sorulan{" "}
+            {copy.title}{" "}
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              sorular
+              {copy.highlight}
             </span>
           </h2>
-          <p className="text-zinc-500">Aklınızdaki soruların cevapları burada.</p>
+          <p className="text-zinc-500">{copy.description}</p>
         </motion.div>
 
         <div className="space-y-3">
-          {FAQ.map((item, i) => (
+          {copy.items.map((item, i) => (
             <FaqItem key={i} item={item} i={i} />
           ))}
         </div>

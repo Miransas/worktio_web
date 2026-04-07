@@ -2,67 +2,17 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Star, Quote } from "lucide-react";
-import FloatingLines from "./FloatingLines";
-
-const TESTIMONIALS = [
-  {
-    name: "Ahmet Yılmaz",
-    role: "Startup Kurucu",
-    company: "TechFlow",
-    text: "n8n'den geçtim, bir daha dönmeyeceğim. AI agent özelliği inanılmaz. Saatlerim otomatize oldu.",
-    avatar: "AY",
-    color: "from-purple-500 to-violet-600",
-  },
-  {
-    name: "Selin Kaya",
-    role: "Freelancer",
-    company: "Serbest",
-    text: "Gmail otomasyonu saatlerimi kurtardı. Kurulum 5 dakika sürdü, şimdi her şey otomatik.",
-    avatar: "SK",
-    color: "from-blue-500 to-cyan-600",
-  },
-  {
-    name: "Mert Demir",
-    role: "SaaS Developer",
-    company: "DevStudio",
-    text: "Flow Builder'ın UI'ı çok akıcı. Müşterilerime de önerdim, hepsi memnun.",
-    avatar: "MD",
-    color: "from-emerald-500 to-teal-600",
-  },
-  {
-    name: "Zeynep Arslan",
-    role: "Pazarlama Müdürü",
-    company: "GrowthCo",
-    text: "AI Marketing modülü ile sosyal medya içeriklerimizi otomatize ettik. ROI inanılmaz.",
-    avatar: "ZA",
-    color: "from-rose-500 to-pink-600",
-  },
-  {
-    name: "Can Öztürk",
-    role: "Backend Developer",
-    company: "CloudSoft",
-    text: "Webhook trigger ile tüm CI/CD pipeline'ımızı bağladık. Mükemmel çalışıyor.",
-    avatar: "CÖ",
-    color: "from-amber-500 to-orange-600",
-  },
-  {
-    name: "Elif Şahin",
-    role: "Ürün Müdürü",
-    company: "ProductLab",
-    text: "Analytics sayfası gerçekten işe yarıyor. Hangi otomasyonların çalıştığını anında görüyorum.",
-    avatar: "EŞ",
-    color: "from-indigo-500 to-purple-600",
-  },
-];
+import { useLocale } from "next-intl";
+import { getDictionary } from "@/lib/lang";
 
 export default function Testimonials() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
+  const locale = useLocale();
+  const copy = getDictionary(locale).landing.testimonials;
 
   return (
     <section className="py-32 px-6  bg-gradient-to-b from-[#030303] via-orange-800  to-[#1a1a1a]relative overflow-hidden">
-      
-      
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -74,16 +24,16 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-4">
-            Kullanıcılar{" "}
+            {copy.title}{" "}
             <span className="bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">
-              ne diyor?
+              {copy.highlight}
             </span>
           </h2>
-          <p className="text-zinc-500">Binlerce kullanıcı Worktio ile otomasyonlarını kurdu.</p>
+          <p className="text-zinc-500">{copy.description}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {TESTIMONIALS.map((t, i) => (
+          {copy.items.map((t, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -95,7 +45,7 @@ export default function Testimonials() {
               <Quote size={20} className="text-white/5 absolute top-4 right-4" />
 
               <div className="flex gap-1 mb-4">
-                {[1, 2, 3, 4, 5].map(s => (
+                {[1, 2, 3, 4, 5].map((s) => (
                   <Star key={s} size={12} className="text-amber-400 fill-amber-400" />
                 ))}
               </div>

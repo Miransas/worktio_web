@@ -1,31 +1,32 @@
 "use client";
 import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { AppLocale, getDictionary } from "@/lib/lang";
 
-const LANGUAGES = [
-  { code: "tr", label: "Türkçe", flag: "🇹🇷" },
-  { code: "en", label: "English", flag: "🇬🇧" },
-  { code: "uz", label: "O'zbek", flag: "🇺🇿" },
+const LANGUAGES: Array<{ code: AppLocale; flag: string }> = [
+  { code: "tr", flag: "🇹🇷" },
+  { code: "en", flag: "🇬🇧" },
+  { code: "uz", flag: "🇺🇿" },
 ];
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
+  const copy = getDictionary(locale);
   const router = useRouter();
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const current = LANGUAGES.find(l => l.code === locale) ?? LANGUAGES[0];
+  const current = LANGUAGES.find(l => l.code === locale) ?? LANGUAGES[1];
 
-  const switchLocale = (code: string) => {
-    // Mevcut path'den locale prefix'i kaldır, yeni ekle
-    const segments = pathname.split("/");
-    const hasLocale = LANGUAGES.some(l => l.code === segments[1]);
-    const cleanPath = hasLocale ? "/" + segments.slice(2).join("/") : pathname;
-    const newPath = code === "tr" ? cleanPath || "/" : `/${code}${cleanPath}`;
-    router.push(newPath);
+  const switchLocale = async (code: AppLocale) => {
+    await fetch("/api/locale", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ locale: code }),
+    });
     setOpen(false);
+    router.refresh();
   };
 
   return (
@@ -35,7 +36,7 @@ export default function LanguageSwitcher() {
         className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-sm text-zinc-300 hover:bg-white/10 transition-all"
       >
         <span>{current.flag}</span>
-        <span className="hidden sm:block">{current.label}</span>
+        <span className="hidden sm:block">{copy.languages[current.code]}</span>
         <ChevronDown size={12} className={`text-zinc-500 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 
@@ -46,7 +47,7 @@ export default function LanguageSwitcher() {
             {LANGUAGES.map(lang => (
               <button
                 key={lang.code}
-                onClick={() => switchLocale(lang.code)}
+                onClick={() => void switchLocale(lang.code)}
                 className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors text-left ${
                   locale === lang.code
                     ? "bg-purple-500/10 text-purple-300"
@@ -54,7 +55,7 @@ export default function LanguageSwitcher() {
                 }`}
               >
                 <span>{lang.flag}</span>
-                <span>{lang.label}</span>
+                <span>{copy.languages[lang.code]}</span>
               </button>
             ))}
           </div>
